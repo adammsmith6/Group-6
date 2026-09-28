@@ -4,6 +4,11 @@ package com.napier.sem;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
+    /***
+     *
+     * @param args
+     */
+
         public static void main (String[]args){
             System.out.printf("Hello and welcome!");
         }
