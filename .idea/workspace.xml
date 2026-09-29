@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="Updated action name" />
+    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="add java dot" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +37,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [package].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -107,10 +109,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <MESSAGE value="Testing GitHub actions" />
-    <MESSAGE value="Update README.md" />
-    <MESSAGE value="Updated action name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated action name" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="add java dot" />
+    <option name="LAST_COMMIT_MESSAGE" value="add java dot" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
