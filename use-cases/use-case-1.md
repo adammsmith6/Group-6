@@ -1,14 +1,14 @@
-# USE CASE: 4 Produce a Report on the Salary of Employees of a Given Role
+# USE CASE: 1 Produce a Report of All Countries in the World by Population
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *Organization* I want *to produce a report All the countries in the world organised by largest population to smallest* so that *I can support financial reporting of the organisation.*
+As an *Organisation* I want *to produce a report of all the countries in the world organised from largest population to smallest* so that *I can access accurate population information for organisational reporting.*
 
 ### Scope
 
-Company.
+Population Reporting System.
 
 ### Level
 
@@ -16,35 +16,51 @@ Primary task.
 
 ### Preconditions
 
-We know the role.  Database contains current employee salary data.
+The world database is available and contains country and population information.
 
 ### Success End Condition
 
-A report is available for HR to provide to finance.
+A report of all countries, ordered from largest population to smallest, is produced.
 
 ### Failed End Condition
 
-No report is produced.
+No country report is produced.
 
 ### Primary Actor
 
-HR Advisor.
+Organisation Employee.
 
 ### Trigger
 
-A request for finance information is sent to HR.
+The organisation requests a report of all countries ordered by population.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Finance request salary information for a given role.
-2. HR advisor captures name of the role to get salary information for.
-3. HR advisor extracts current salary information of all employees of the given role.
-4. HR advisor provides report to finance.
+1. The organisation requests a report of all countries in the world.
+2. The employee requests the country population report from the system.
+3. The system retrieves all countries from the database.
+4. The system orders the countries from largest population to smallest.
+5. The system generates the country report.
+6. The employee receives the completed report.
+
+The country report contains:
+
+- Code
+- Name
+- Continent
+- Region
+- Population
+- Capital
 
 ## EXTENSIONS
 
-3. **Role does not exist**:
-    1. HR advisor informs finance no role exists.
+3. **Database information cannot be retrieved**:
+   1. The system cannot retrieve the required country information.
+   2. The employee is informed that the report cannot be produced.
+
+3a. **No country data is available**:
+1. The system finds no country records.
+2. The employee is informed that no country information is available.
 
 ## SUB-VARIATIONS
 
