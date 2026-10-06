@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="Initial Commit" />
+    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="change use-case-1.md">
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-4.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-5.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Group6Coursework-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Group6Coursework-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/use-cases/use-case-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/use-cases/use-case-1.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +30,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/adammsmith6/Group-6&quot;,
-    &quot;accountId&quot;: &quot;cbe0e9fe-1d9e-435b-a7cd-a14a299a7560&quot;
+    &quot;accountId&quot;: &quot;14a5867b-98cd-4e5b-8003-6a9ede18461a&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -37,6 +45,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [package].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -107,7 +117,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="add use case 1" />
+    <MESSAGE value="new changes" />
+    <MESSAGE value="change use-case-1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="change use-case-1.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
