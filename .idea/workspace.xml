@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="new changes">
+    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="change use-case-1.md">
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-4.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-5.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Group6Coursework-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Group6Coursework-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/use-cases/use-case-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/use-cases/use-case-1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +120,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="add use case 1" />
     <MESSAGE value="new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="new changes" />
+    <MESSAGE value="change use-case-1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="change use-case-1.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
