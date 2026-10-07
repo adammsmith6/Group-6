@@ -21,7 +21,7 @@ The world database is available and contains city and population information.
 
 ### Success End Condition
 
-A report of all cities within a district, with their respective populations, ordered by lrgest population to smallest.
+A report of all cities within a district, with their respective populations, ordered by largest population to smallest.
 
 ### Failed End Condition
 
@@ -37,30 +37,26 @@ The organisation requests a report of all cities with a district, ordered by lar
 
 ## MAIN SUCCESS SCENARIO
 
-1. The organisation requests a report of all countries in the world.
-2. The employee requests the country population report from the system.
-3. The system retrieves all countries from the database.
-4. The system orders the countries from largest population to smallest.
-5. The system generates the country report.
+1. The organisation requests a report of all cities in a district, ordered by population largest to smallest.
+2. The employee requests the city population report from the system.
+3. The system retrieves all cities within a specific district from the database.
+4. The system orders the cities from largest population to smallest.
+5. The system generates the city report.
 6. The employee receives the completed report.
 
 The report contains:
 
-- Code
-- Name
-- Continent
-- Region
+- City name
 - Population
-- Capital
 
 ## EXTENSIONS
 
 1. **Database information cannot be retrieved**:
-   1. The system cannot retrieve the required country information.
+   1. The system cannot retrieve the required city information.
    2. The employee is informed that the report cannot be produced.
 
-2. **No country data is available**:
-   1. The system finds no country records.
+2. **No city data is available**:
+   1. The system finds no city records.
    2. The employee is informed that no country information is available.
 
 ## SUB-VARIATIONS
