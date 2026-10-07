@@ -45,9 +45,11 @@ The organisation requests a report of the first N cities with the world, ordered
 6. The system generates the city report.
 7. The employee receives the completed report.
 
-The report contains:
+The City Report contains:
 
-- City name
+- City
+- Country
+- District
 - Population
 
 ## EXTENSIONS

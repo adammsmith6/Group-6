@@ -44,9 +44,11 @@ The organisation requests a report of all cities with a district, ordered by lar
 5. The system generates the city report.
 6. The employee receives the completed report.
 
-The report contains:
+The City report contains:
 
-- City name
+- City
+- Country
+- District
 - Population
 
 ## EXTENSIONS
