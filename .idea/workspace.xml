@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="add Dockerfile and database file">
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-16.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-17.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-18.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-19.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-20.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/use-cases/use-case-16.md" beforeDir="false" afterPath="$PROJECT_DIR$/use-cases/use-case-16.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
