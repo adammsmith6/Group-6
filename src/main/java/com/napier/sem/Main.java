@@ -1,11 +1,23 @@
+
 package com.napier.sem;
+import java.sql.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
         public static void main (String[]args){
-            System.out.printf("Hello and welcome!");
+
+            // Create application
+            App a = new App();
+
+            // Connect to database
+            a.connect();
+
+            // Disconnect from database
+            a.disconnect();
         }
+
+
 
 }
