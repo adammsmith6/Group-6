@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="new changes">
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-10.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-6.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-7.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-8.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-9.md" afterDir="false" />
+    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="add Dockerfile and database file">
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-17.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-18.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-19.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/use-cases/use-case-20.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/use-cases/use-case-16.md" beforeDir="false" afterPath="$PROJECT_DIR$/use-cases/use-case-16.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +18,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -29,8 +30,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/adammsmith6/Group-6.git",
-    "accountId": "1545d12b-c35b-4e17-86aa-41c32761fe71"
+    "url": "https://github.com/adammsmith6/Group-6",
+    "accountId": "fa53fe59-0d71-42e2-ae1d-1943b59d5cbe"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -54,7 +55,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/adamsmith/Library/CloudStorage/OneDrive-EdinburghNapierUniversity/SET08103 TR1 Software Engineering Methods/Group-6/use-cases",
+    "last_opened_file_path": "D:/40805201/Group-6/use-cases",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,7 +66,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/use-cases" />
+      <recent name="D:\40805201\Group-6\use-cases" />
     </key>
   </component>
   <component name="RunManager">
@@ -126,7 +127,9 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="add use case 1" />
     <MESSAGE value="new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="new changes" />
+    <MESSAGE value="change use-case-1.md" />
+    <MESSAGE value="add Dockerfile and database file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Dockerfile and database file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
