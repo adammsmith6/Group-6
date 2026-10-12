@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="add Dockerfile and database file">
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-17.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-18.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-19.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/use-cases/use-case-20.md" afterDir="false" />
+    <list default="true" id="73329d07-ccb9-47c6-97a0-9ff9fb0f5345" name="Changes" comment="Defined Use Cases 6-10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/use-cases/use-case-16.md" beforeDir="false" afterPath="$PROJECT_DIR$/use-cases/use-case-16.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +23,12 @@
     &quot;assignee&quot;: &quot;MichaelAMarshall&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/adammsmith6/Group-6",
-    "accountId": "fa53fe59-0d71-42e2-ae1d-1943b59d5cbe"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/adammsmith6/Group-6.git&quot;,
+    &quot;accountId&quot;: &quot;1545d12b-c35b-4e17-86aa-41c32761fe71&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0,
   &quot;fromUser&quot;: false
@@ -61,7 +56,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
