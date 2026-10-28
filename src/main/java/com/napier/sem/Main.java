@@ -1,23 +1,25 @@
-
 package com.napier.sem;
-import java.sql.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+import java.util.ArrayList;
 
-        public static void main (String[]args){
+public class Main
+{
+    public static void main(String[] args)
+    {
+        // Create the application.
+        App a = new App();
 
-            // Create application
-            App a = new App();
+        // Connect to the World database.
+        a.connect();
 
-            // Connect to database
-            a.connect();
+        // Retrieve all countries ordered from largest
+        // population to smallest.
+        ArrayList<Country> countries = a.getCountries();
 
-            // Disconnect from database
-            a.disconnect();
-        }
+        // Display the country population report.
+        a.displayCountries(countries);
 
-
-
+        // Disconnect from the database.
+        a.disconnect();
+    }
 }
