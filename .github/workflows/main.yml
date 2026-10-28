@@ -1,6 +1,6 @@
 name: A workflow for our group project
 
-# Run this workflow whenever code is pushed to GitHub.
+# Run the workflow whenever code is pushed to GitHub.
 on: push
 
 jobs:
@@ -22,20 +22,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Compile the application and run Maven tests.
-      - name: Build with Maven
-        run: mvn clean package
+      # Run all JUnit unit tests.
+      - name: Unit Tests
+        run: mvn test
 
-      # Build and start the application and database containers.
-      - name: Start Docker Compose
-        run: docker compose up --build -d
-
-      # Display the status of the Docker containers.
-      - name: Check container status
-        run: docker compose ps
-
-      # Display the application output.
-      # This allows us to check whether the database connection
-      # and population report were successful.
-      - name: View application logs
-        run: docker compose logs app
+      # Package the application without running the tests again.
+      # Then start the application and database using Docker Compose.
+      - name: Package and Run Docker Compose
+        run: |
+          mvn package -DskipTests
+          docker compose up --abort-on-container-exit
