@@ -116,8 +116,24 @@ public class App {
         // population to smallest.
         // ArrayList<City> cities = a.getCities();
 
-        // Display the country population report.
+        // Display the city population report.
         // a.displayCities(cities);
+
+
+        // -------------------------
+        // Use Case 17
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 17: CAPITAL CITY REPORT ==========\n"
+        );
+
+        // Retrieve all capital cities ordered from largest
+        // population to smallest.
+        ArrayList<CapitalCity> capitalCities = a.getCapitalCities();
+
+        // Display the capital city population report.
+        a.displayCapitalCities(capitalCities);
 
 
         // Disconnect from the database.
@@ -911,7 +927,7 @@ public class App {
             // Execute the query and store the returned rows.
             ResultSet rset = stmt.executeQuery(sql);
 
-            // Create a list to store all countries retrieved from the database.
+            // Create a list to store all cities retrieved from the database.
             ArrayList<City> cities = new ArrayList<>();
 
             // Process each row returned by the database.
@@ -930,12 +946,12 @@ public class App {
                 cities.add(city);
             }
 
-            // Return the completed list of countries.
+            // Return the completed list of cities.
             return cities;
         }
         catch (Exception e)
         {
-            // Display an error if the country information cannot be retrieved.
+            // Display an error if the city information cannot be retrieved.
             System.out.println(e.getMessage());
             System.out.println("Failed to get city details.");
 
@@ -987,6 +1003,105 @@ public class App {
     }
 
 
+
+    /**
+     * Gets all capital cities in the world from the database
+     * ordered by population from largest to smallest.
+     *
+     * @return An ArrayList containing all capital cities,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<CapitalCity> getCapitalCities()
+    {
+        try
+        {
+            // SQL for Use Case 17:
+            // Retrieve all capital cities,
+            // ordered from largest population to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name as 'Country', city.Population " +
+                            "FROM city " +
+                            "LEFT JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Capital = city.Id " +
+                            "ORDER BY city.Population DESC";
+
+            // Create a statement to execute the SQL query.
+            Statement stmt = con.createStatement();
+
+            // Execute the query and store the returned rows.
+            ResultSet rset = stmt.executeQuery(sql);
+
+            // Create a list to store all capital cities retrieved from the database.
+            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                // Create a new CapitalCity object for the current row.
+                CapitalCity capitalCity = new CapitalCity();
+
+                // Store the database values in the CapitalCity object.
+                capitalCity.name = rset.getString("Name");
+                capitalCity.country = rset.getString("Country");
+                capitalCity.population = rset.getInt("Population");
+
+                // Add the capital city to the list.
+                capitalCities.add(capitalCity);
+            }
+
+            // Return the completed list of city.
+            return capitalCities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the city information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital city details.");
+
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities including their name, country, district and population.
+     *
+     * @param capitalCities List of capital cities to be displayed.
+     */
+    public void displayCapitalCities(ArrayList<CapitalCity> capitalCities)
+    {
+        // Check if the list is null.
+        if (capitalCities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (capitalCities.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the capital city report.
+        System.out.printf(
+                "%-35s %-35s %-15s%n",
+                "Name",
+                "Country",
+                "Population"
+        );
+
+        // Display each Capital City in the report.
+        for (CapitalCity capitalCity : capitalCities)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-15d%n",
+                    capitalCity.name,
+                    capitalCity.country,
+                    capitalCity.population
+            );
+        }
+    }
 
     /**
      * Disconnect from the MySQL database.
