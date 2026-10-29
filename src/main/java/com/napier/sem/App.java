@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 
 public class App {
 
+    /**
+     * Main method, all use case reports are generated within
+     * @param args possible location for the connect method
+     */
     public static void main(String[] args)
     {
         // Create the application.
