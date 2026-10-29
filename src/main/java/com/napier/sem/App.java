@@ -771,6 +771,109 @@ public class App {
     }
 
     /**
+     * Gets all cities in the world from the database
+     * ordered by population from largest to smallest.
+     *
+     * @return An ArrayList containing all cities,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCities()
+    {
+        try
+        {
+            // SQL for Use Case 7:
+            // Retrieve all cities,
+            // ordered from largest population to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name as 'Country', city.District, city.Population " +
+                            "FROM city " +
+                            "LEFT JOIN country ON city.CountryCode = country.Code " +
+                            "ORDER BY city.Population DESC";
+
+            // Create a statement to execute the SQL query.
+            Statement stmt = con.createStatement();
+
+            // Execute the query and store the returned rows.
+            ResultSet rset = stmt.executeQuery(sql);
+
+            // Create a list to store all countries retrieved from the database.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                // Create a new City object for the current row.
+                City city = new City();
+
+                // Store the database values in the City object.
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list of countries.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the country information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details.");
+
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities including their name, country, district and population.
+     *
+     * @param cities List of cities to be displayed.
+     */
+    public void displayCities(ArrayList<City> cities)
+    {
+        // Check if the list is null.
+        if (cities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (cities.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the city report.
+        System.out.printf(
+                "%-35s %-35s %-20s %-15s%n",
+                "Name",
+                "Country",
+                "District",
+                "Population"
+        );
+
+        // Display each city in the report.
+        for (City city : cities)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-20s %-15d%n",
+                    city.name,
+                    city.country,
+                    city.district,
+                    city.population
+            );
+        }
+    }
+
+
+
+    /**
      * Disconnect from the MySQL database.
      */
     public void disconnect()
