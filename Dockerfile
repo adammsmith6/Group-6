@@ -1,8 +1,7 @@
 FROM amazoncorretto:17
 
-COPY ./target/classes/com /tmp/com
-COPY ./target/dependency /tmp/dependency
+COPY ./target/semApp.jar /tmp
 
 WORKDIR /tmp
 
-ENTRYPOINT ["java", "-cp", ".:dependency/*", "com.napier.sem.Main"]
+ENTRYPOINT ["java", "-jar", "semApp.jar", "db:3306", "30000"]

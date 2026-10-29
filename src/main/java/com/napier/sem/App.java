@@ -10,6 +10,120 @@ import java.sql.PreparedStatement;
 
 
 public class App {
+
+    /**
+     * Main method, all use case reports are generated within
+     * @param args possible location for the connect method
+     */
+    public static void main(String[] args)
+    {
+        // Create the application.
+        App a = new App();
+
+        // Connect to the World database.
+        if(args.length < 1){
+            a.connect("localhost:33060", 0);
+        }else{
+            a.connect(args[0], Integer.parseInt(args[1]));
+        }
+
+        // Use Case 1
+        // Retrieve all countries ordered from largest
+        // population to smallest.
+        // ArrayList<Country> countries = a.getCountries();
+
+        // Display the country population report.
+        // a.displayCountries(countries);
+
+        // Use Case 2
+        // Retrieve all countries in Europe ordered by population.
+        ArrayList<Country> countriesByContinent =
+                a.getCountriesByContinent("Europe");
+
+        // Display the countries in Europe.
+        a.displayCountriesByContinent(countriesByContinent);
+
+
+        // Use Case 3
+        System.out.println(
+                "\n========== USE CASE 3: WESTERN EUROPE ==========\n"
+        );
+
+        // Retrieve all countries in Western Europe,
+        // ordered from largest population to smallest.
+        ArrayList<Country> countriesByRegion =
+                a.getCountriesByRegion("Western Europe");
+
+        // Display the countries in Western Europe.
+        a.displayCountriesByRegion(countriesByRegion);
+
+        // -------------------------
+        // Use Case 4
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 4: TOP 5 COUNTRIES ==========\n"
+        );
+
+        // Retrieve the top 5 populated countries
+        // in the world.
+        ArrayList<Country> topCountries =
+                a.getTopNCountries(5);
+
+        // Display the top 5 countries.
+        a.displayTopNCountries(topCountries);
+
+        // -------------------------
+        // Use Case 5
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 5: TOP 5 COUNTRIES IN EUROPE ==========\n"
+        );
+
+        // Retrieve the top 5 populated countries in Europe.
+        ArrayList<Country> topCountriesByContinent =
+                a.getTopNCountriesByContinent("Europe", 5);
+
+        // Display the top 5 countries in Europe.
+        a.displayTopNCountriesByContinent(topCountriesByContinent);
+
+        // -------------------------
+        // Use Case 6
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 6: TOP 5 COUNTRIES IN WESTERN EUROPE ==========\n"
+        );
+
+        // Retrieve the top 5 populated countries
+        // in Western Europe.
+        ArrayList<Country> topCountriesByRegion =
+                a.getTopNCountriesByRegion("Western Europe", 5);
+
+        // Display the top 5 countries in Western Europe.
+        a.displayTopNCountriesByRegion(topCountriesByRegion);
+
+        // -------------------------
+        // Use Case 7
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 7: CITY REPORT ==========\n"
+        );
+
+        // Retrieve all cities ordered from largest
+        // population to smallest.
+        // ArrayList<City> cities = a.getCities();
+
+        // Display the country population report.
+        // a.displayCities(cities);
+
+
+        // Disconnect from the database.
+        a.disconnect();
+    }
+
     /**
      * Connection to MySQL database.
      */
@@ -18,7 +132,7 @@ public class App {
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect(String location, int delay)
     {
         try
         {
@@ -40,11 +154,12 @@ public class App {
             try
             {
                 // Wait for database container to start
-                Thread.sleep(30000);
+                Thread.sleep(delay);
 
                 // Connect to World database
                 con = DriverManager.getConnection(
-                        "jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false",
+                        "jdbc:mysql://" + location +
+                                "/world?allowPublicKeyRetrieval=true&useSSL=false",
                         "root",
                         "example"
                 );
@@ -769,6 +884,109 @@ public class App {
             );
         }
     }
+
+    /**
+     * Gets all cities in the world from the database
+     * ordered by population from largest to smallest.
+     *
+     * @return An ArrayList containing all cities,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCities()
+    {
+        try
+        {
+            // SQL for Use Case 7:
+            // Retrieve all cities,
+            // ordered from largest population to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name as 'Country', city.District, city.Population " +
+                            "FROM city " +
+                            "LEFT JOIN country ON city.CountryCode = country.Code " +
+                            "ORDER BY city.Population DESC";
+
+            // Create a statement to execute the SQL query.
+            Statement stmt = con.createStatement();
+
+            // Execute the query and store the returned rows.
+            ResultSet rset = stmt.executeQuery(sql);
+
+            // Create a list to store all countries retrieved from the database.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                // Create a new City object for the current row.
+                City city = new City();
+
+                // Store the database values in the City object.
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list of countries.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the country information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details.");
+
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities including their name, country, district and population.
+     *
+     * @param cities List of cities to be displayed.
+     */
+    public void displayCities(ArrayList<City> cities)
+    {
+        // Check if the list is null.
+        if (cities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (cities.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the city report.
+        System.out.printf(
+                "%-35s %-35s %-20s %-15s%n",
+                "Name",
+                "Country",
+                "District",
+                "Population"
+        );
+
+        // Display each city in the report.
+        for (City city : cities)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-20s %-15d%n",
+                    city.name,
+                    city.country,
+                    city.district,
+                    city.population
+            );
+        }
+    }
+
+
 
     /**
      * Disconnect from the MySQL database.
