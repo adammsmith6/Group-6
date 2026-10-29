@@ -89,6 +89,22 @@ public class Main
         // Display the top 5 countries in Western Europe.
         a.displayTopNCountriesByRegion(topCountriesByRegion);
 
+        // -------------------------
+        // Use Case 7
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 7: CITY REPORT ==========\n"
+        );
+
+        // Retrieve all cities ordered from largest
+        // population to smallest.
+        // ArrayList<City> cities = a.getCities();
+
+        // Display the country population report.
+        // a.displayCities(cities);
+
+
         // Disconnect from the database.
         a.disconnect();
     }
