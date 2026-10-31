@@ -26,15 +26,21 @@ public class App {
         }else{
             a.connect(args[0], Integer.parseInt(args[1]));
         }
-
+// Use Case 3
+        System.out.println(
+                "\n========== USE CASE 1: Countries in the World ==========\n"
+        );
         // Use Case 1
         // Retrieve all countries ordered from largest
         // population to smallest.
-        // ArrayList<Country> countries = a.getCountries();
+         ArrayList<Country> countries = a.getCountries();
 
-        // Display the country population report.
-        // a.displayCountries(countries);
-
+//         Display the country population report.
+         a.displayCountries(countries);
+// Use Case 3
+        System.out.println(
+                "\n========== USE CASE 2: Countries in EUROPE ==========\n"
+        );
         // Use Case 2
         // Retrieve all countries in Europe ordered by population.
         ArrayList<Country> countriesByContinent =
@@ -103,7 +109,37 @@ public class App {
 
         // Display the top 5 countries in Western Europe.
         a.displayTopNCountriesByRegion(topCountriesByRegion);
+        // -------------------------
+        // Use Case 7
+        // -------------------------
 
+        System.out.println(
+                "\n========== USE CASE 7: ALL CITIES IN THE WORLD ==========\n"
+        );
+
+        // Retrieve all cities in the world,
+        // ordered from largest population to smallest.
+        ArrayList<City> allCities = a.getCities();
+
+        // Display all cities in the world.
+        a.displayCities(allCities);
+
+
+        // -------------------------
+        // Use Case 8
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 8: ALL CITIES IN ASIA ==========\n"
+        );
+
+        // Retrieve all cities in Asia,
+        // ordered from largest population to smallest.
+        ArrayList<City> citiesByContinent =
+                a.getCitiesByContinent("Asia");
+
+        // Display all cities in Asia.
+        a.displayCitiesByContinent(citiesByContinent);
 
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
@@ -1614,7 +1650,102 @@ public class App {
             );
         }
     }
+    public ArrayList<City> getCitiesByContinent(String continent)
+    {
+        try
+        {
+            // SQL for Use Case 8:
+            // Retrieve all cities in a specified continent,
+            // ordered from largest population to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, " +
+                            "city.District, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Continent = ? " +
+                            "ORDER BY city.Population DESC";
 
+            // Create a prepared statement for the SQL query.
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the ? with the specified continent.
+            stmt.setString(1, continent);
+
+            // Execute the SQL query.
+            ResultSet rset = stmt.executeQuery();
+
+            // Create a list to store cities.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                // Create a new City object.
+                City city = new City();
+
+                // Store the database values.
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get cities by continent.");
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities in a specified continent.
+     *
+     * @param cities List of cities to be displayed.
+     */
+    public void displayCitiesByContinent(ArrayList<City> cities)
+    {
+        // Check if the list is null.
+        if (cities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list is empty.
+        if (cities.isEmpty())
+        {
+            System.out.println("No cities found in this continent.");
+            return;
+        }
+
+        // Display the column headings.
+        System.out.printf(
+                "%-35s %-35s %-20s %-15s%n",
+                "Name",
+                "Country",
+                "District",
+                "Population"
+        );
+
+        // Display each city.
+        for (City city : cities)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-20s %-15d%n",
+                    city.name,
+                    city.country,
+                    city.district,
+                    city.population
+            );
+        }
+    }
 
 
     /**

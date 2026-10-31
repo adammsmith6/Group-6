@@ -4,27 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="update use case sql">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/CapitalCityTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/CityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/cities-reports" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +32,6 @@
   "keyToString": {
     "Application.App.executor": "Run",
     "JUnit.AppIntegrationTest.executor": "Run",
-    "JUnit.CityTest.executor": "Run",
     "JUnit.CountryTest.executor": "Run",
     "Maven.Group6Coursework [clean].executor": "Run",
     "Maven.Group6Coursework [package].executor": "Run",
@@ -51,11 +39,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/cities-unittesting",
+    "git-widget-placeholder": "feature/cities-reports",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.CityTest">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.napier.sem.App" />
       <module name="Group6Coursework" />
@@ -84,36 +72,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CapitalCityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Group6Coursework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.CapitalCityTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Group6Coursework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.CityTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CountryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Group6Coursework" />
       <extension name="coverage">
@@ -131,11 +89,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CityTest" />
-        <item itemvalue="JUnit.CapitalCityTest" />
         <item itemvalue="JUnit.CountryTest" />
         <item itemvalue="JUnit.AppIntegrationTest" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.CountryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -171,10 +129,6 @@
       </map>
     </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="update use case sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="update use case sql" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -182,11 +136,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/com/napier/sem/CountryTest.java</url>
           <line>9</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/napier/sem/CityTest.java</url>
-          <line>8</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
