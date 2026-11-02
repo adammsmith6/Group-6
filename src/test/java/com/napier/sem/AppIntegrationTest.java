@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -80,7 +81,45 @@ public class AppIntegrationTest
         app.displayCountries(countries);
     }
 
+    /**
+     * Tests getCountries by seeing if it contains an example country
+     */
+    @Test
+    void getCountriesTest(){
+        // Create application object
+        App app = new App();
 
+        // Create country for testing
+        Country country = new Country();
+        country.code = "GBR";
+        country.name = "United Kingdom";
+        country.continent = "Europe";
+        country.region = "British Islands";
+        country.population = 59623400;
+        country.capital = "London";
+
+        // Connects to database for testing
+        app.connect("localhost:33060", 0);
+
+        // Calling getCountries method and asserting it contains our country
+        ArrayList<Country> countries = app.getCountries();
+
+        // Checking if there is an item within the list matching our created country
+        boolean found = false;
+        for (Country c : countries){
+            if (Objects.equals(c.code, country.code)){
+                assertEquals(country.code, c.code);
+                assertEquals(country.name, c.name);
+                assertEquals(country.continent, c.continent);
+                assertEquals(country.region, c.region);
+                assertEquals(country.population, c.population);
+                assertEquals(country.capital, c.capital);
+                found = true;
+            }
+        }
+
+        assertTrue(found);
+    }
 
     // ----------------
     // TESTS FOR CITIES
