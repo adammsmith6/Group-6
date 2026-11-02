@@ -3,6 +3,8 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 
 /**
  * Tests for the capital city report methods.
@@ -224,4 +226,95 @@ public class CapitalCityTest
         // Test capital city list.
         app.displayTopNCapitalCities(capitalCities);
     }
+
+    // ========================================
+    // USE CASE 21 - Top N capital cities
+    // in a continent
+    // ========================================
+
+    @Test
+    void displayTopNCapitalCitiesByContinentTestNull()
+    {
+        // Test when the list is null.
+        App app = new App();
+
+        assertDoesNotThrow(() ->
+                app.displayTopNCapitalCitiesByContinent(null));
+    }
+
+    @Test
+    void displayTopNCapitalCitiesByContinentTestEmpty()
+    {
+        // Test when the list is empty.
+        App app = new App();
+        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
+
+        assertDoesNotThrow(() ->
+                app.displayTopNCapitalCitiesByContinent(capitalCities));
+    }
+
+    @Test
+    void displayTopNCapitalCitiesByContinentTestValid()
+    {
+        // Test when the list contains a capital city.
+        App app = new App();
+        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
+
+        CapitalCity capitalCity = new CapitalCity();
+        capitalCity.name = "Tokyo";
+        capitalCity.country = "Japan";
+        capitalCity.population = 7980230;
+
+        capitalCities.add(capitalCity);
+
+        assertDoesNotThrow(() ->
+                app.displayTopNCapitalCitiesByContinent(capitalCities));
+    }
+
+
+    // ========================================
+    // USE CASE 22 - Top N capital cities
+    // in a region
+    // ========================================
+
+    @Test
+    void displayTopNCapitalCitiesByRegionTestNull()
+    {
+        // Test when the list is null.
+        App app = new App();
+
+        assertDoesNotThrow(() ->
+                app.displayTopNCapitalCitiesByRegion(null));
+    }
+
+    @Test
+    void displayTopNCapitalCitiesByRegionTestEmpty()
+    {
+        // Test when the list is empty.
+        App app = new App();
+        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
+
+        assertDoesNotThrow(() ->
+                app.displayTopNCapitalCitiesByRegion(capitalCities));
+    }
+
+    @Test
+    void displayTopNCapitalCitiesByRegionTestValid()
+    {
+        // Test when the list contains a capital city.
+        App app = new App();
+        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
+
+        CapitalCity capitalCity = new CapitalCity();
+        capitalCity.name = "Seoul";
+        capitalCity.country = "South Korea";
+        capitalCity.population = 9981619;
+
+        capitalCities.add(capitalCity);
+
+        assertDoesNotThrow(() ->
+                app.displayTopNCapitalCitiesByRegion(capitalCities));
+    }
+
+
 }

@@ -13,9 +13,9 @@ public class AppIntegrationTest {
 
     @BeforeAll
     static void init() {
+        // Connecting to database locally
         app = new App();
         app.connect("localhost:33060", 0);
-
     }
 
     // -------------------
@@ -94,6 +94,7 @@ public class AppIntegrationTest {
     // ------------------------
     // TESTS FOR CAPITAL CITIES
     // ------------------------
+
     /**
      * Tests getCapitalCities by seeing if it contains an example city
      */
