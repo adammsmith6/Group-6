@@ -47,6 +47,10 @@ public class App {
                 "\n========== USE CASE 2: ==========\n"
         );
         // Retrieve all countries in Europe ordered by population.
+
+        System.out.println(
+                "\n========== USE CASE 2: Europe ==========\n"
+        );
         ArrayList<Country> countriesByContinent =
                 a.getCountriesByContinent("Europe");
 
