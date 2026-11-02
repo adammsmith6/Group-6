@@ -247,6 +247,36 @@ public class App {
 
 
 
+        // -------------------------
+        // Use Case 23
+        // -------------------------
+        System.out.println(
+                "\n========== USE CASE 23: POPULATION BY CONTINENT ==========\n"
+        );
+
+        a.displayPopulationByContinent();
+
+
+        // -------------------------
+        // Use Case 24
+        // -------------------------
+        System.out.println(
+                "\n========== USE CASE 24: POPULATION BY REGION ==========\n"
+        );
+
+        a.displayPopulationByRegion();
+
+
+        // -------------------------
+        // Use Case 25
+        // -------------------------
+        System.out.println(
+                "\n========== USE CASE 25: POPULATION BY COUNTRY ==========\n"
+        );
+
+        a.displayPopulationByCountry();
+
+
         // Disconnect from the database.
         a.disconnect();
     }
@@ -1947,6 +1977,211 @@ public class App {
         }
     }
 
+    /**
+     * Use Case 23:
+     * Displays the total population, city population,
+     * and non-city population for each continent.
+     */
+    public void displayPopulationByContinent()
+    {
+        try
+        {
+            // Calculate city population for each country first.
+            // Then combine countries by continent.
+            String sql =
+                    "SELECT country.Continent AS Name, " +
+                            "SUM(country.Population) AS TotalPopulation, " +
+                            "SUM(COALESCE(city_pop.CityPopulation, 0)) AS CityPopulation " +
+                            "FROM country " +
+                            "LEFT JOIN ( " +
+                            "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
+                            "    FROM city " +
+                            "    GROUP BY CountryCode " +
+                            ") city_pop ON country.Code = city_pop.CountryCode " +
+                            "GROUP BY country.Continent " +
+                            "ORDER BY country.Continent";
+
+            try (Statement stmt = con.createStatement();
+                 ResultSet rset = stmt.executeQuery(sql))
+            {
+                System.out.printf(
+                        "%-25s %-18s %-18s %-18s %-12s %-12s%n",
+                        "Continent", "Total Population", "City Population",
+                        "Non-City Population", "City %", "Non-City %"
+                );
+
+                while (rset.next())
+                {
+                    String name = rset.getString("Name");
+                    long total = rset.getLong("TotalPopulation");
+                    long city = rset.getLong("CityPopulation");
+                    long nonCity = total - city;
+
+                    double cityPercent = 0;
+                    double nonCityPercent = 0;
+
+                    if (total > 0)
+                    {
+                        cityPercent = city * 100.0 / total;
+                        nonCityPercent = nonCity * 100.0 / total;
+                    }
+
+                    System.out.printf(
+                            "%-25s %-18d %-18d %-18d %-12.2f %-12.2f%n",
+                            name, total, city, nonCity,
+                            cityPercent, nonCityPercent
+                    );
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to display population by continent.");
+        }
+    }
+
+    /**
+     * Use Case 24:
+     * Displays the total population, city population,
+     * and non-city population for each region.
+     */
+    public void displayPopulationByRegion()
+    {
+        try
+        {
+            // Calculate city population for each country first.
+            // Then combine countries by region.
+            String sql =
+                    "SELECT country.Region AS Name, " +
+                            "SUM(country.Population) AS TotalPopulation, " +
+                            "SUM(COALESCE(city_pop.CityPopulation, 0)) AS CityPopulation " +
+                            "FROM country " +
+                            "LEFT JOIN ( " +
+                            "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
+                            "    FROM city " +
+                            "    GROUP BY CountryCode " +
+                            ") city_pop ON country.Code = city_pop.CountryCode " +
+                            "GROUP BY country.Region " +
+                            "ORDER BY country.Region";
+
+            try (Statement stmt = con.createStatement();
+                 ResultSet rset = stmt.executeQuery(sql))
+            {
+                System.out.printf(
+                        "%-35s %-18s %-18s %-18s %-12s %-12s%n",
+                        "Region", "Total Population", "City Population",
+                        "Non-City Population", "City %", "Non-City %"
+                );
+
+                while (rset.next())
+                {
+                    String name = rset.getString("Name");
+                    long total = rset.getLong("TotalPopulation");
+                    long city = rset.getLong("CityPopulation");
+                    long nonCity = total - city;
+
+                    double cityPercent = 0;
+                    double nonCityPercent = 0;
+
+                    if (total > 0)
+                    {
+                        cityPercent = city * 100.0 / total;
+                        nonCityPercent = nonCity * 100.0 / total;
+                    }
+
+                    System.out.printf(
+                            "%-35s %-18d %-18d %-18d %-12.2f %-12.2f%n",
+                            name, total, city, nonCity,
+                            cityPercent, nonCityPercent
+                    );
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to display population by region.");
+        }
+    }
+
+
+    /**
+     * Use Case 25:
+     * Displays the total population, city population,
+     * and non-city population for each country.
+     */
+    public void displayPopulationByCountry()
+    {
+        try
+        {
+            // Get the total population and the population
+            // living in listed cities for each country.
+            String sql =
+                    "SELECT country.Name AS Name, " +
+                            "country.Population AS TotalPopulation, " +
+                            "COALESCE(city_pop.CityPopulation, 0) AS CityPopulation " +
+                            "FROM country " +
+                            "LEFT JOIN ( " +
+                            "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
+                            "    FROM city " +
+                            "    GROUP BY CountryCode " +
+                            ") city_pop ON country.Code = city_pop.CountryCode " +
+                            "ORDER BY country.Name";
+
+            try (Statement stmt = con.createStatement();
+                 ResultSet rset = stmt.executeQuery(sql))
+            {
+                // Display report headings.
+                System.out.printf(
+                        "%-40s %-18s %-18s %-18s %-12s %-12s%n",
+                        "Country",
+                        "Total Population",
+                        "City Population",
+                        "Non-City Population",
+                        "City %",
+                        "Non-City %"
+                );
+
+                // Display each country's population.
+                while (rset.next())
+                {
+                    String name = rset.getString("Name");
+                    long total = rset.getLong("TotalPopulation");
+                    long city = rset.getLong("CityPopulation");
+
+                    // Calculate people not living in listed cities.
+                    long nonCity = total - city;
+
+                    double cityPercent = 0;
+                    double nonCityPercent = 0;
+
+                    // Avoid dividing by zero.
+                    if (total > 0)
+                    {
+                        cityPercent = city * 100.0 / total;
+                        nonCityPercent = nonCity * 100.0 / total;
+                    }
+
+                    // Print the country population report.
+                    System.out.printf(
+                            "%-40s %-18d %-18d %-18d %-12.2f %-12.2f%n",
+                            name,
+                            total,
+                            city,
+                            nonCity,
+                            cityPercent,
+                            nonCityPercent
+                    );
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to display population by country.");
+        }
+    }
 
     /**
      * Disconnect from the MySQL database.
