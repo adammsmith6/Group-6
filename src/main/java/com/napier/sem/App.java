@@ -30,13 +30,21 @@ public class App {
         // Use Case 1
         // Retrieve all countries ordered from largest
         // population to smallest.
-        // ArrayList<Country> countries = a.getCountries();
+
+        System.out.println(
+                "\n========== USE CASE 1: All Countries ==========\n"
+        );
+        ArrayList<Country> countries = a.getCountries();
 
         // Display the country population report.
-        // a.displayCountries(countries);
+        a.displayCountries(countries);
 
         // Use Case 2
         // Retrieve all countries in Europe ordered by population.
+
+        System.out.println(
+                "\n========== USE CASE 2: Europe ==========\n"
+        );
         ArrayList<Country> countriesByContinent =
                 a.getCountriesByContinent("Europe");
 
