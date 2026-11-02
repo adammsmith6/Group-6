@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/napier/sem/CapitalCityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/napier/sem/CapitalCityTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/cities-unittesting" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/cities-unittesting",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -126,10 +123,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CapitalCityTest" />
-        <item itemvalue="JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull" />
-        <item itemvalue="JUnit.CityTest" />
         <item itemvalue="JUnit.CountryTest" />
+        <item itemvalue="JUnit.CityTest" />
+        <item itemvalue="JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull" />
+        <item itemvalue="JUnit.CapitalCityTest" />
         <item itemvalue="JUnit.AppIntegrationTest" />
       </list>
     </recent_temporary>
@@ -165,6 +162,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="push" />
+    <option name="LAST_COMMIT_MESSAGE" value="push" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
