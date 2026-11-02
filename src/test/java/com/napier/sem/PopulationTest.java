@@ -25,6 +25,7 @@ public class PopulationTest
     {
         // Create application object.
         App app = new App();
+        app.connect("localhost:33060", 0);
 
         // Test the population report method.
         assertDoesNotThrow(() ->
@@ -44,6 +45,7 @@ public class PopulationTest
     {
         // Create application object.
         App app = new App();
+        app.connect("localhost:33060", 0);
 
         // Test the population report method.
         assertDoesNotThrow(() ->
@@ -63,6 +65,7 @@ public class PopulationTest
     {
         // Create application object.
         App app = new App();
+        app.connect("localhost:33060", 0);
 
         // Test the population report method.
         assertDoesNotThrow(() ->
