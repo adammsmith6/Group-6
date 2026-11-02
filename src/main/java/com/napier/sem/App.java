@@ -27,15 +27,25 @@ public class App {
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
+        // -------------------------
         // Use Case 1
+        // -------------------------
+        System.out.println(
+                "\n========== USE CASE 1: ==========\n"
+        );
         // Retrieve all countries ordered from largest
         // population to smallest.
-        // ArrayList<Country> countries = a.getCountries();
+        ArrayList<Country> countries = a.getCountries();
 
         // Display the country population report.
-        // a.displayCountries(countries);
+        a.displayCountries(countries);
 
+        // -------------------------
         // Use Case 2
+        // -------------------------
+        System.out.println(
+                "\n========== USE CASE 2: ==========\n"
+        );
         // Retrieve all countries in Europe ordered by population.
         ArrayList<Country> countriesByContinent =
                 a.getCountriesByContinent("Europe");
@@ -44,7 +54,9 @@ public class App {
         a.displayCountriesByContinent(countriesByContinent);
 
 
+        // -------------------------
         // Use Case 3
+        // -------------------------
         System.out.println(
                 "\n========== USE CASE 3: WESTERN EUROPE ==========\n"
         );
@@ -104,6 +116,20 @@ public class App {
         // Display the top 5 countries in Western Europe.
         a.displayTopNCountriesByRegion(topCountriesByRegion);
 
+        // -------------------------
+        // Use Case 7
+        // -------------------------
+
+        System.out.println(
+                "\n========== USE CASE 7: CITY REPORT ==========\n"
+        );
+
+        // Retrieve all cities ordered from largest
+        // population to smallest.
+        ArrayList<City> citiesUseCase7 = a.getCities();
+
+        // Display the country population report.
+        a.displayCities(citiesUseCase7);
 
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
