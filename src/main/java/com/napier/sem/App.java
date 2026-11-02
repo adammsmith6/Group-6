@@ -222,7 +222,12 @@ public class App {
         // Display the top 5 capital cities in the world.
         a.displayTopNCapitalCities(topCapitalCities);
 
-
+        // -------------------------
+        // Use Case 26
+        // -------------------------
+        System.out.println(
+                "\n========== USE CASE 26: TOTAL POPULATION OF THE WORLD ==========\n"
+        );
 
 
 
