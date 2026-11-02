@@ -8,13 +8,11 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AppIntegrationTest
-{
+public class AppIntegrationTest {
     static App app;
 
     @BeforeAll
-    static void init()
-    {
+    static void init() {
         app = new App();
         app.connect("localhost:33060", 0);
 
@@ -25,70 +23,10 @@ public class AppIntegrationTest
     // -------------------
 
     /**
-     * Tests displayCountries with a null list.
-     */
-    @Test
-    void displayCountriesTestNull()
-    {
-        // Create application object
-        App app = new App();
-
-        // Test null country list
-        app.displayCountries(null);
-    }
-
-    /**
-     * Tests displayCountries with an empty list.
-     */
-    @Test
-    void displayCountriesTestEmpty()
-    {
-        // Create application object
-        App app = new App();
-
-        // Create empty country list
-        ArrayList<Country> countries = new ArrayList<>();
-
-        // Test empty country list
-        app.displayCountries(countries);
-    }
-
-    /**
-     * Tests displayCountries with a country in the list.
-     */
-    @Test
-    void displayCountriesTestCountry()
-    {
-        // Create application object
-        App app = new App();
-
-        // Create country for testing
-        Country country = new Country();
-        country.code = "GBR";
-        country.name = "United Kingdom";
-        country.continent = "Europe";
-        country.region = "British Islands";
-        country.population = 59623400;
-        country.capital = "London";
-
-        // Create country list
-        ArrayList<Country> countries = new ArrayList<>();
-
-        // Add country to list
-        countries.add(country);
-
-        // Test country list
-        app.displayCountries(countries);
-    }
-
-    /**
      * Tests getCountries by seeing if it contains an example country
-
+     */
     @Test
-    void getCountriesTest(){
-        // Create application object
-        App app = new App();
-
+    void getCountriesTest() {
         // Create country for testing
         Country country = new Country();
         country.code = "GBR";
@@ -97,17 +35,14 @@ public class AppIntegrationTest
         country.region = "British Islands";
         country.population = 59623400;
         country.capital = "London";
-
-        // Connects to database for testing
-        app.connect("localhost:33060", 0);
 
         // Calling getCountries method and asserting it contains our country
         ArrayList<Country> countries = app.getCountries();
 
         // Checking if there is an item within the list matching our created country
         boolean found = false;
-        for (Country c : countries){
-            if (Objects.equals(c.code, country.code)){
+        for (Country c : countries) {
+            if (Objects.equals(c.code, country.code)) {
                 assertEquals(country.code, c.code);
                 assertEquals(country.name, c.name);
                 assertEquals(country.continent, c.continent);
@@ -120,69 +55,70 @@ public class AppIntegrationTest
 
         assertTrue(found);
     }
-     */
+
 
     // ----------------
     // TESTS FOR CITIES
     // ----------------
-    /**
-     * Tests displayCities with a null list.
-     */
-    @Test
-    void displayCitiesTestNull()
-    {
-        // Create application object
-        App app = new App();
-
-        // Test null country list
-        app.displayCities(null);
-    }
 
     /**
-     * Tests displayCities with an empty list.
+     * Tests getCities by seeing if it contains an example city
      */
     @Test
-    void displayCitiesTestEmpty()
-    {
-        // Create application object
-        App app = new App();
+    void getCitiesTest() {
+        // Create city for testing
+        City city = new City();
+        city.name = "Seoul";
+        city.country = "South Korea";
+        city.district = "Seoul";
+        city.population = 9981619;
 
-        // Create empty city list
-        ArrayList<City> cities = new ArrayList<>();
+        // Calling getCities method and asserting it contains our city
+        ArrayList<City> cities = app.getCities();
 
-        // Test empty city list
-        app.displayCities(cities);
+        // Checking if there is an item within the list matching our created city
+        boolean found = false;
+        for (City c : cities) {
+            if (Objects.equals(c.name, city.name)) {
+                assertEquals(city.name, c.name);
+                assertEquals(city.country, c.country);
+                assertEquals(city.district, c.district);
+                assertEquals(city.population, c.population);
+                found = true;
+            }
+        }
+
+        assertTrue(found);
     }
 
-    // ----------------
+    // ------------------------
     // TESTS FOR CAPITAL CITIES
-    // ----------------
+    // ------------------------
     /**
-     * Tests displayCapitalCities with a null list.
+     * Tests getCapitalCities by seeing if it contains an example city
      */
     @Test
-    void displayCapitalCitiesTestNull()
-    {
-        // Create application object.
-        App app = new App();
+    void getCapitalCitiesTest() {
+        // Create city for testing
+        CapitalCity city = new CapitalCity();
+        city.name = "Seoul";
+        city.country = "South Korea";
+        city.population = 9981619;
 
-        // Test null capital city list.
-        app.displayCapitalCities(null);
-    }
+        // Calling getCapitalCities method and asserting it contains our city
+        ArrayList<CapitalCity> cities = app.getCapitalCities();
 
-    /**
-     * Tests displayCapitalCities with an empty list.
-     */
-    @Test
-    void displayCapitalCitiesTestEmpty()
-    {
-        // Create application object.
-        App app = new App();
+        // Checking if there is an item within the list matching our created city
+        boolean found = false;
+        for (CapitalCity c : cities) {
+            if (Objects.equals(c.name, city.name)) {
+                assertEquals(city.name, c.name);
+                assertEquals(city.country, c.country);
+                assertEquals(city.population, c.population);
+                found = true;
+            }
+        }
 
-        // Create empty capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Test empty capital city list.
-        app.displayCapitalCities(capitalCities);
+        assertTrue(found);
     }
 }
