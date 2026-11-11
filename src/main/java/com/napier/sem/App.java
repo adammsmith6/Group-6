@@ -141,10 +141,24 @@ public class App {
         // Display all cities in Asia.
         a.displayCitiesByContinent(citiesByContinent);
 
+
+        // Use Case 10
+        // all the cities in a country organised by largest population to smallest.
+
+        System.out.println(
+                "\n========== USE CASE 10: ALL CITIES IN THE UNITED KINGDOM ==========\n"
+        );
+
+        // Retrieve all cities in the specified country ordered from largest population to smallest.
+        ArrayList<City> citiesInCountry = a.getCitesInCountry("United Kingdom");
+
+        // Display the capital city population report.
+        a.displayCitiesInCountry(citiesInCountry);
+
+
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
         );
-
         // Use Case 16:
         // Get the top 5 populated cities in California.
         ArrayList<City> cities =
@@ -1143,6 +1157,106 @@ public class App {
         }
     }
 
+    /**
+     * Gets all cities in a country from the database
+     * ordered by population from largest to smallest
+     *
+     * @param country The country to search for
+     * @return An ArrayList containing all cities in a country,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCitesInCountry(String country)
+    {
+        try {
+            // SQL for Use Case 10:
+            // Retrieve all cities from a country
+            // Ordered from largest population to smallest
+            String sql =
+                    "SELECT city.Name, country.Name AS 'Country', city.Population "
+                    + "FROM city "
+                    + "JOIN country ON city.CountryCode = country.Code "
+                    + "WHERE country.Name = ? "
+                    + "ORDER BY city.population DESC";
+
+            // Create a statement to execute the SQL query
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the ? with the country.
+            stmt.setString(1, country);
+
+            // Execute the query and store the returned rows
+            ResultSet rset = stmt.executeQuery();
+
+            //Create a list to store all the cities retrieved from the database
+            ArrayList<City> citiesInCountry = new ArrayList<>();
+
+            // Process each row returned by the database
+            while (rset.next())
+            {
+                // Create a new City object for the current row
+                City city = new City();
+
+                // Store the database values in the City object
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list
+                citiesInCountry.add(city);
+            }
+
+            // Returns completed list
+            return citiesInCountry;
+        }
+        catch (Exception e) {
+
+            // Display an error if the city information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get cities in a country details.");
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities including their name, country, and population.
+     *
+     * @param citiesInCountry List of cities to be displayed.
+     */
+    public void displayCitiesInCountry(ArrayList<City> citiesInCountry)
+    {
+        // Check if the list is null.
+        if (citiesInCountry == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (citiesInCountry.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the capital city report.
+        System.out.printf(
+                "%-35s %-35s %-15s%n",
+                "Name",
+                "Country",
+                "Population"
+        );
+
+        // Display each Capital City in the report.
+        for (City city : citiesInCountry)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-15d%n",
+                    city.name,
+                    city.country,
+                    city.population
+            );
+        }
+    }
 
 
     /**
@@ -1202,7 +1316,6 @@ public class App {
             return null;
         }
     }
-
     /**
      * Displays a report of cities including their name, country, district and population.
      *
