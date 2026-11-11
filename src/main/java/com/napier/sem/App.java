@@ -141,6 +141,19 @@ public class App {
         // Display all cities in Asia.
         a.displayCitiesByContinent(citiesByContinent);
 
+        // Use Case 9
+        // all the cities in a region organised by largest population to smallest.
+
+        System.out.println(
+                "\n========== USE CASE 9: ALL CITIES IN WESTERN EUROPE ==========\n"
+        );
+
+        // Retrieve all cities in the specified region ordered from largest population to smallest.
+        ArrayList<City> citiesInRegion = a.getCitesInRegion("Western Europe");
+
+        // Display the cities in a region report ordered by population.
+        a.displayCitiesInRegion(citiesInRegion);
+
 
         // Use Case 10
         // all the cities in a country organised by largest population to smallest.
@@ -152,7 +165,7 @@ public class App {
         // Retrieve all cities in the specified country ordered from largest population to smallest.
         ArrayList<City> citiesInCountry = a.getCitesInCountry("United Kingdom");
 
-        // Display the capital city population report.
+        // Display the cities in a country report ordered by population.
         a.displayCitiesInCountry(citiesInCountry);
 
 
@@ -1152,6 +1165,107 @@ public class App {
                     city.name,
                     city.country,
                     city.district,
+                    city.population
+            );
+        }
+    }
+
+    /**
+     * Gets all cities in a region from the database
+     * ordered by population from largest to smallest
+     *
+     * @param region The region to search for
+     * @return An ArrayList containing all cities in a region,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCitesInRegion(String region)
+    {
+        try {
+            // SQL for Use Case 9:
+            // Retrieve all cities from a region
+            // Ordered from largest population to smallest
+            String sql =
+                    "SELECT city.Name, country.Name AS 'Country', city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Region = ? "
+                            + "ORDER BY city.population DESC";
+
+            // Create a statement to execute the SQL query
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the ? with the region.
+            stmt.setString(1, region);
+
+            // Execute the query and store the returned rows
+            ResultSet rset = stmt.executeQuery();
+
+            //Create a list to store all the cities retrieved from the database
+            ArrayList<City> citiesInRegion = new ArrayList<>();
+
+            // Process each row returned by the database
+            while (rset.next())
+            {
+                // Create a new City object for the current row
+                City city = new City();
+
+                // Store the database values in the City object
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list
+                citiesInRegion.add(city);
+            }
+
+            // Returns completed list
+            return citiesInRegion;
+        }
+        catch (Exception e) {
+
+            // Display an error if the city information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get cities in a region details.");
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities including their name, country, and population.
+     *
+     * @param citiesInRegion List of cities to be displayed.
+     */
+    public void displayCitiesInRegion(ArrayList<City> citiesInRegion)
+    {
+        // Check if the list is null.
+        if (citiesInRegion == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (citiesInRegion.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the cities by region report.
+        System.out.printf(
+                "%-35s %-35s %-15s%n",
+                "Name",
+                "Country",
+                "Population"
+        );
+
+        // Display each city in the report.
+        for (City city : citiesInRegion)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-15d%n",
+                    city.name,
+                    city.country,
                     city.population
             );
         }
