@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="" />
+    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +31,65 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000053594542" />
+      <entry key="S2" value="1.0143883586242408" />
+      <entry key="S5" value="1.2778556214174628" />
+      <entry key="S10" value="1.745459476059692" />
+      <entry key="S30" value="2.4393327957342956" />
+      <entry key="S60" value="2.6966780696817647" />
+      <entry key="M2" value="2.851970180258167" />
+      <entry key="M5" value="3.8013785978464134" />
+      <entry key="M10" value="8.247204203435345" />
+      <entry key="M15" value="14.049101453485802" />
+      <entry key="M30" value="30.00391637893162" />
+      <entry key="H1" value="48.96625028512456" />
+      <entry key="H2" value="64.75574111494227" />
+      <entry key="H4" value="75.21413253176554" />
+      <entry key="D1" value="85.68199685447173" />
+      <entry key="W1" value="87.66389667015552" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.5390696928970145E-27" />
+      <entry key="MS500" value="4.3396195521259476E-6" />
+      <entry key="S2" value="0.045641815840159555" />
+      <entry key="S5" value="0.2909009675441708" />
+      <entry key="S10" value="0.5393523593571932" />
+      <entry key="S30" value="0.8139996052681903" />
+      <entry key="S60" value="0.9022195151857744" />
+      <entry key="M2" value="0.9509307021984208" />
+      <entry key="M5" value="1.1652998887285682" />
+      <entry key="M10" value="2.305216021869214" />
+      <entry key="M15" value="3.9462291349725804" />
+      <entry key="M30" value="8.890153845490095" />
+      <entry key="H1" value="15.20847410533747" />
+      <entry key="H2" value="20.68959369580618" />
+      <entry key="H4" value="24.398623420264826" />
+      <entry key="D1" value="28.160944237820356" />
+      <entry key="W1" value="28.878214871198967" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="3.4371410188891694E-11" />
+      <entry key="MS500" value="0.00807794429840098" />
+      <entry key="S2" value="0.3460968838870927" />
+      <entry key="S5" value="1.1440991140141221" />
+      <entry key="S10" value="2.0278885143367713" />
+      <entry key="S30" value="3.1530883104006175" />
+      <entry key="S60" value="3.546510461649761" />
+      <entry key="M2" value="3.7760305323922427" />
+      <entry key="M5" value="4.952955514019984" />
+      <entry key="M10" value="10.537754080741337" />
+      <entry key="M15" value="17.97854908753823" />
+      <entry key="M30" value="38.87604776434774" />
+      <entry key="H1" value="64.1600503149721" />
+      <entry key="H2" value="85.4356568566497" />
+      <entry key="H4" value="99.60714406232543" />
+      <entry key="D1" value="113.84187702252288" />
+      <entry key="W1" value="116.5419560508198" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -38,6 +102,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App.executor": "Run",
+    "Docker.docker-compose.yml.db: Compose Deployment.executor": "Run",
     "JUnit.AppIntegrationTest.executor": "Run",
     "JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull.executor": "Run",
     "JUnit.CountryTest.executor": "Run",
@@ -47,26 +112,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true"
+    "git-widget-placeholder": "cities-in-a-country---population-largest-to-smallest",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
+    ]
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.CapitalCityTest">
-    <configuration name="AppIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Group6Coursework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.napier.sem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.AppIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Docker.docker-compose.yml.db: Compose Deployment">
     <configuration name="CapitalCityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Group6Coursework" />
       <extension name="coverage">
@@ -128,21 +188,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
         <item itemvalue="JUnit.CountryTest" />
         <item itemvalue="JUnit.CityTest" />
         <item itemvalue="JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull" />
         <item itemvalue="JUnit.CapitalCityTest" />
-        <item itemvalue="JUnit.AppIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10315.125" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10315.125" />
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
+        <option value="bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-IU-263.7307.200" />
       </set>
     </attachedChunks>
   </component>
