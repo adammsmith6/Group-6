@@ -1300,7 +1300,7 @@ public class App {
             // Retrieve all cities from a country
             // Ordered from largest population to smallest
             String sql =
-                    "SELECT city.Name, country.Name AS 'Country', city.Population "
+                    "SELECT city.Name, city.District, city.Population "
                     + "FROM city "
                     + "JOIN country ON city.CountryCode = country.Code "
                     + "WHERE country.Name = ? "
@@ -1326,7 +1326,7 @@ public class App {
 
                 // Store the database values in the City object
                 city.name = rset.getString("Name");
-                city.country = rset.getString("Country");
+                city.district = rset.getString("District");
                 city.population = rset.getInt("Population");
 
                 // Add the city to the list
@@ -1370,7 +1370,7 @@ public class App {
         System.out.printf(
                 "%-35s %-35s %-15s%n",
                 "Name",
-                "Country",
+                "District",
                 "Population"
         );
 
@@ -1380,7 +1380,7 @@ public class App {
             System.out.printf(
                     "%-35s %-35s %-15d%n",
                     city.name,
-                    city.country,
+                    city.district,
                     city.population
             );
         }
