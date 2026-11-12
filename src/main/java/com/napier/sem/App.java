@@ -168,6 +168,20 @@ public class App {
         // Display the cities in a country report ordered by population.
         a.displayCitiesInCountry(citiesInCountry);
 
+        // Use Case 11
+        // all the cities in a district organised by largest population to smallest.
+
+        System.out.println(
+                "\n========== USE CASE 11: ALL CITIES IN SCOTLAND ==========\n"
+        );
+
+        // Retrieve all cities in the specified district ordered from largest population to smallest.
+        ArrayList<City> citiesInDistrict = a.getCitesInDistrict("Scotland");
+
+        // Display the cities in a district report ordered by population.
+        a.displayCitiesInDistrict(citiesInDistrict);
+
+
 
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
@@ -1352,7 +1366,7 @@ public class App {
             return;
         }
 
-        // Display the column headings for the capital city report.
+        // Display the column headings for the cities in country report.
         System.out.printf(
                 "%-35s %-35s %-15s%n",
                 "Name",
@@ -1360,8 +1374,109 @@ public class App {
                 "Population"
         );
 
-        // Display each Capital City in the report.
+        // Display each City in the report.
         for (City city : citiesInCountry)
+        {
+            System.out.printf(
+                    "%-35s %-35s %-15d%n",
+                    city.name,
+                    city.country,
+                    city.population
+            );
+        }
+    }
+
+    /**
+     * Gets all cities in a district from the database
+     * ordered by population from largest to smallest
+     *
+     * @param district The district to search for
+     * @return An ArrayList containing all cities in a district,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCitesInDistrict(String district)
+    {
+        try {
+            // SQL for Use Case 11:
+            // Retrieve all cities from a district
+            // Ordered from largest population to smallest
+            String sql =
+                    "SELECT city.Name, country.Name AS 'Country', city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.district = ? "
+                            + "ORDER BY city.population DESC";
+
+            // Create a statement to execute the SQL query
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the ? with the district.
+            stmt.setString(1, district);
+
+            // Execute the query and store the returned rows
+            ResultSet rset = stmt.executeQuery();
+
+            //Create a list to store all the cities retrieved from the database
+            ArrayList<City> citiesInDistrict = new ArrayList<>();
+
+            // Process each row returned by the database
+            while (rset.next())
+            {
+                // Create a new City object for the current row
+                City city = new City();
+
+                // Store the database values in the City object
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list
+                citiesInDistrict.add(city);
+            }
+
+            // Returns completed list
+            return citiesInDistrict;
+        }
+        catch (Exception e) {
+
+            // Display an error if the city information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get cities in a district details.");
+            return null;
+        }
+    }
+
+    /**
+     * Displays a report of cities including their name, country, and population.
+     *
+     * @param citiesInDistrict List of cities to be displayed.
+     */
+    public void displayCitiesInDistrict(ArrayList<City> citiesInDistrict)
+    {
+        // Check if the list is null.
+        if (citiesInDistrict == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (citiesInDistrict.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the cities in district report.
+        System.out.printf(
+                "%-35s %-35s %-15s%n",
+                "Name",
+                "Country",
+                "Population"
+        );
+
+        // Display each City in the report.
+        for (City city : citiesInDistrict)
         {
             System.out.printf(
                     "%-35s %-35s %-15d%n",
