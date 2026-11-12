@@ -141,7 +141,8 @@ public class App {
         // Display all cities in Asia.
         a.displayCitiesByContinent(citiesByContinent);
 
-        // Use Case 9
+        // ** Use Case 9 **
+
         // all the cities in a region organised by largest population to smallest.
 
         System.out.println(
@@ -155,7 +156,8 @@ public class App {
         a.displayCitiesInRegion(citiesInRegion);
 
 
-        // Use Case 10
+        // ** Use Case 10 **
+
         // all the cities in a country organised by largest population to smallest.
 
         System.out.println(
@@ -168,7 +170,8 @@ public class App {
         // Display the cities in a country report ordered by population.
         a.displayCitiesInCountry(citiesInCountry);
 
-        // Use Case 11
+        // ** Use Case 11 **
+
         // all the cities in a district organised by largest population to smallest.
 
         System.out.println(
@@ -181,6 +184,20 @@ public class App {
         // Display the cities in a district report ordered by population.
         a.displayCitiesInDistrict(citiesInDistrict);
 
+        // ** Use Case 12 **
+
+        // the top n populated cities in the world where n is defined by the user
+
+        System.out.println(
+                "\n========== USE CASE 12: TOP 10 POPULATED CITIES IN THE WORLD ==========\n"
+        );
+
+        // Retrieve the top 10 populated cities in the world
+        ArrayList<City> topNCities =
+                a.getTopNCities(10);
+
+        // Display the top 10 populated cities in the world.
+        a.displayTopNCities(topNCities);
 
 
         System.out.println(
@@ -1487,6 +1504,109 @@ public class App {
         }
     }
 
+    /**
+     * Gets the top n populated cities in the world.
+     *
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of the world, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCities(int n)
+    {
+        try
+        {
+            // SQL for Use Case 12
+            // Retrieve the top N cities in the world
+            String sql =
+                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
+                    + "FROM city "
+                    + "JOIN country ON city.CountryCode = country.Code "
+                    + "ORDER BY city.Population DESC "
+                    + "LIMIT ?";
+
+            // Create a prepared statement for the SQL query.
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the ? with the limit (N)
+            stmt.setInt(1, n);
+
+            // Execute the query and store returned rows
+            ResultSet rset = stmt.executeQuery();
+
+            // Create a list to store the cities.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                //Create a City object for the current row.
+                City city = new City();
+
+                // Store the database values in the City object.
+                city.name = rset.getString("Name");
+                city.district = rset.getString("District");
+                city.country = rset.getString("Country");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the city information cannot be retrieved
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top N cities in the world.");
+
+            return null;
+        }
+
+    }
+
+    /**
+     * Displays a report of the top N cities in the world.
+     *
+     * @param cities List of cities to be displayed.
+     */
+    public void displayTopNCities(ArrayList<City> cities)
+    {
+        // Check if the list is null.
+        if (cities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (cities.isEmpty())
+        {
+            System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the city report
+        System.out.printf(
+                "%-35s %-30s %-35s %-15s%n",
+                "Name",
+                "District",
+                "Country",
+                "Population"
+        );
+
+        //Display each city in the report.
+        for (City city : cities)
+        {
+            System.out.printf(
+                    "%-35s %-30s %-35s %-15d%n",
+                    city.name,
+                    city.district,
+                    city.country,
+                    city.population
+            );
+        }
+    }
 
     /**
      * Gets all capital cities in the world from the database
