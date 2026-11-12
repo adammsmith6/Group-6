@@ -199,6 +199,21 @@ public class App {
         // Display the top 10 populated cities in the world.
         a.displayTopNCities(topNCities);
 
+        // ** Use Case 13 **
+
+        // the top n populated cities in a specified continent where n is defined by the user.
+
+        System.out.println(
+                "\n========== USE CASE 13: TOP 15 POPULATED CITIES IN EUROPE ==========\n"
+        );
+
+        // Retrieve the top 15 populated cities in Europe.
+        ArrayList<City> topNCitiesByContinent =
+                a.getTopNCitiesByContinent("Europe", 15);
+
+        // Display the top 10 populated cities in the world.
+        a.displayTopNCitiesByContinent(topNCitiesByContinent);
+
 
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
@@ -1583,6 +1598,115 @@ public class App {
         if (cities.isEmpty())
         {
             System.out.println("No cities found.");
+            return;
+        }
+
+        // Display the column headings for the city report
+        System.out.printf(
+                "%-35s %-30s %-35s %-15s%n",
+                "Name",
+                "District",
+                "Country",
+                "Population"
+        );
+
+        //Display each city in the report.
+        for (City city : cities)
+        {
+            System.out.printf(
+                    "%-35s %-30s %-35s %-15d%n",
+                    city.name,
+                    city.district,
+                    city.country,
+                    city.population
+            );
+        }
+    }
+
+    /**
+     * Gets the top n populated cities in a continent.
+     *
+     * @param continent The continent to search for.
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of a specified continent, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCitiesByContinent(String continent, int n)
+    {
+        try
+        {
+            // SQL for Use Case 13
+            // Retrieve the top N cities in a specified continent.
+            String sql =
+                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = ?"
+                            + "ORDER BY city.Population DESC "
+                            + "LIMIT ?";
+
+            // Create a prepared statement for the SQL query.
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the first ? with the continent.
+            stmt.setString(1, continent);
+
+            // Replace the second ? with the limit (N)
+            stmt.setInt(2, n);
+
+            // Execute the query and store returned rows
+            ResultSet rset = stmt.executeQuery();
+
+            // Create a list to store the cities.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                //Create a City object for the current row.
+                City city = new City();
+
+                // Store the database values in the City object.
+                city.name = rset.getString("Name");
+                city.district = rset.getString("District");
+                city.country = rset.getString("Country");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the city information cannot be retrieved
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top N cities in a continent.");
+
+            return null;
+        }
+
+    }
+
+    /**
+     * Displays a report of the top N cities in a specified continent.
+     *
+     * @param cities List of cities to be displayed.
+     */
+    public void displayTopNCitiesByContinent(ArrayList<City> cities)
+    {
+        // Check if the list is null.
+        if (cities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (cities.isEmpty())
+        {
+            System.out.println("No cities found in this continent.");
             return;
         }
 
