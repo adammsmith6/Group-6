@@ -229,6 +229,21 @@ public class App {
         // Display the top 8 populated cities in the specified region.
         a.displayTopNCitiesByRegion(topNCitiesByRegion);
 
+        // ** Use Case 15 **
+
+        // the top n populated cities in a specified country where n is defined by the user.
+
+        System.out.println(
+                "\n========== USE CASE 15: TOP 6 POPULATED CITIES IN ITALY ==========\n"
+        );
+
+        // Retrieve the top 6 populated cities in Italy.
+        ArrayList<City> topNCitiesByCountry =
+                a.getTopNCitiesByCountry("Italy", 6);
+
+        // Display the top 6 populated cities in the specified country.
+        a.displayTopNCitiesByCountry(topNCitiesByCountry);
+
 
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
@@ -1851,6 +1866,112 @@ public class App {
                     city.name,
                     city.district,
                     city.country,
+                    city.population
+            );
+        }
+    }
+
+    /**
+     * Gets the top n populated cities in a country.
+     *
+     * @param country The country to search for.
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of a specified country, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCitiesByCountry(String country, int n)
+    {
+        try
+        {
+            // SQL for Use Case 15
+            // Retrieve the top N cities in a specified country.
+            String sql =
+                    "SELECT city.Name, city.District, city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Name = ?"
+                            + "ORDER BY city.Population DESC "
+                            + "LIMIT ?";
+
+            // Create a prepared statement for the SQL query.
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            // Replace the first ? with the country.
+            stmt.setString(1, country);
+
+            // Replace the second ? with the limit (N)
+            stmt.setInt(2, n);
+
+            // Execute the query and store returned rows
+            ResultSet rset = stmt.executeQuery();
+
+            // Create a list to store the cities.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                //Create a City object for the current row.
+                City city = new City();
+
+                // Store the database values in the City object.
+                city.name = rset.getString("Name");
+                city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the city information cannot be retrieved
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top N cities in a country.");
+
+            return null;
+        }
+
+    }
+
+    /**
+     * Displays a report of the top N cities in a specified country.
+     *
+     * @param cities List of cities to be displayed.
+     */
+    public void displayTopNCitiesByCountry(ArrayList<City> cities)
+    {
+        // Check if the list is null.
+        if (cities == null)
+        {
+            System.out.println("No city information available.");
+            return;
+        }
+
+        // Check if the list contains no cities.
+        if (cities.isEmpty())
+        {
+            System.out.println("No cities found in this country.");
+            return;
+        }
+
+        // Display the column headings for the city report
+        System.out.printf(
+                "%-35s %-30s %-15s%n",
+                "Name",
+                "District",
+                "Population"
+        );
+
+        //Display each city in the report.
+        for (City city : cities)
+        {
+            System.out.printf(
+                    "%-35s %-30s %-15d%n",
+                    city.name,
+                    city.district,
                     city.population
             );
         }
