@@ -57,16 +57,15 @@ public class App {
         // Display the countries in Europe.
         countryReports.displayCountries(countriesByContinent);
 
+        countryReports.displayCountriesByContinent(countriesByContinent);
 
-        // ---------------
-        // Use Case 3
-        // ---------------
+        // --------------------------------------------------
+        // USE CASE 3: Countries in Western Europe.
+        // --------------------------------------------------
         System.out.println(
                 "\n========== USE CASE 3: WESTERN EUROPE ==========\n"
         );
 
-        // Retrieve all countries in Western Europe,
-        // ordered from largest population to smallest.
         ArrayList<Country> countriesByRegion =
                 countryReports.getCountriesByRegion("Western Europe");
 
@@ -78,12 +77,13 @@ public class App {
         // Use Case 4
         // -------------------
 
+        // --------------------------------------------------
+        // USE CASE 4: Top 5 countries in the world.
+        // --------------------------------------------------
         System.out.println(
                 "\n========== USE CASE 4: TOP 5 COUNTRIES ==========\n"
         );
 
-        // Retrieve the top 5 populated countries
-        // in the world.
         ArrayList<Country> topCountries =
                 countryReports.getTopNCountries(5);
 
@@ -95,11 +95,13 @@ public class App {
         // Use Case 5
         // -------------------
 
+        // --------------------------------------------------
+        // USE CASE 5: Top 5 countries in Europe.
+        // --------------------------------------------------
         System.out.println(
                 "\n========== USE CASE 5: TOP 5 COUNTRIES IN EUROPE ==========\n"
         );
 
-        // Retrieve the top 5 populated countries in Europe.
         ArrayList<Country> topCountriesByContinent =
                 countryReports.getTopNCountriesByContinent("Europe", 5);
 
@@ -107,16 +109,16 @@ public class App {
         countryReports.displayCountries(topCountriesByContinent);
 
 
-        // -------------------------
-        // Use Case 6
-        // -------------------------
+        countryReports.displayTopNCountriesByContinent(
+                topCountriesByContinent);
 
+        // --------------------------------------------------
+        // USE CASE 6: Top 5 countries in Western Europe.
+        // --------------------------------------------------
         System.out.println(
                 "\n========== USE CASE 6: TOP 5 COUNTRIES IN WESTERN EUROPE ==========\n"
         );
 
-        // Retrieve the top 5 populated countries
-        // in Western Europe.
         ArrayList<Country> topCountriesByRegion =
                 countryReports.getTopNCountriesByRegion("Western Europe", 5);
 
