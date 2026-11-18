@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="Condensed all duplicated code into their own respected methods. Reducing the lines of code from around 3000 to around 1400.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/CapitalCity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/CapitalCity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/napier/sem/App.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="populationreport" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,61 +35,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000053594542" />
-      <entry key="S2" value="1.0143883586242408" />
-      <entry key="S5" value="1.2778556214174628" />
-      <entry key="S10" value="1.745459476059692" />
-      <entry key="S30" value="2.4393327957342956" />
-      <entry key="S60" value="2.6966780696817647" />
-      <entry key="M2" value="2.851970180258167" />
-      <entry key="M5" value="3.8013785978464134" />
-      <entry key="M10" value="8.247204203435345" />
-      <entry key="M15" value="14.049101453485802" />
-      <entry key="M30" value="30.00391637893162" />
-      <entry key="H1" value="48.96625028512456" />
-      <entry key="H2" value="64.75574111494227" />
-      <entry key="H4" value="75.21413253176554" />
-      <entry key="D1" value="85.68199685447173" />
-      <entry key="W1" value="87.66389667015552" />
+      <entry key="MS100" value="1.1555357524897011E-20" />
+      <entry key="MS500" value="1.0293348513795314E-4" />
+      <entry key="S2" value="0.10072544430365182" />
+      <entry key="S5" value="0.3997453900025613" />
+      <entry key="S10" value="0.6539045201352818" />
+      <entry key="S30" value="1.138631146637947" />
+      <entry key="S60" value="1.4830156566185566" />
+      <entry key="M2" value="2.095727973008741" />
+      <entry key="M5" value="4.770009875411005" />
+      <entry key="M10" value="10.388353040835488" />
+      <entry key="M15" value="16.675239054882635" />
+      <entry key="M30" value="39.60998357566273" />
+      <entry key="H1" value="93.73763845369729" />
+      <entry key="H2" value="176.61019827351495" />
+      <entry key="H4" value="257.64742336762214" />
+      <entry key="D1" value="364.4535925656264" />
+      <entry key="W1" value="387.913248843518" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.5390696928970145E-27" />
-      <entry key="MS500" value="4.3396195521259476E-6" />
-      <entry key="S2" value="0.045641815840159555" />
-      <entry key="S5" value="0.2909009675441708" />
-      <entry key="S10" value="0.5393523593571932" />
-      <entry key="S30" value="0.8139996052681903" />
-      <entry key="S60" value="0.9022195151857744" />
-      <entry key="M2" value="0.9509307021984208" />
-      <entry key="M5" value="1.1652998887285682" />
-      <entry key="M10" value="2.305216021869214" />
-      <entry key="M15" value="3.9462291349725804" />
-      <entry key="M30" value="8.890153845490095" />
-      <entry key="H1" value="15.20847410533747" />
-      <entry key="H2" value="20.68959369580618" />
-      <entry key="H4" value="24.398623420264826" />
-      <entry key="D1" value="28.160944237820356" />
-      <entry key="W1" value="28.878214871198967" />
+      <entry key="MS100" value="1.0000000000000124" />
+      <entry key="MS500" value="1.0016717499477252" />
+      <entry key="S2" value="1.281901493565328" />
+      <entry key="S5" value="2.2366351962724123" />
+      <entry key="S10" value="3.7105896101630096" />
+      <entry key="S30" value="7.34391402763051" />
+      <entry key="S60" value="9.546220210104568" />
+      <entry key="M2" value="11.292298147407344" />
+      <entry key="M5" value="14.15222211508386" />
+      <entry key="M10" value="19.63072840366099" />
+      <entry key="M15" value="24.86190256649075" />
+      <entry key="M30" value="36.96135254346853" />
+      <entry key="H1" value="54.28670018929618" />
+      <entry key="H2" value="75.63884208213118" />
+      <entry key="H4" value="95.19884349426917" />
+      <entry key="D1" value="120.49639566750812" />
+      <entry key="W1" value="126.0351402260808" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.4371410188891694E-11" />
-      <entry key="MS500" value="0.00807794429840098" />
-      <entry key="S2" value="0.3460968838870927" />
-      <entry key="S5" value="1.1440991140141221" />
-      <entry key="S10" value="2.0278885143367713" />
-      <entry key="S30" value="3.1530883104006175" />
-      <entry key="S60" value="3.546510461649761" />
-      <entry key="M2" value="3.7760305323922427" />
-      <entry key="M5" value="4.952955514019984" />
-      <entry key="M10" value="10.537754080741337" />
-      <entry key="M15" value="17.97854908753823" />
-      <entry key="M30" value="38.87604776434774" />
-      <entry key="H1" value="64.1600503149721" />
-      <entry key="H2" value="85.4356568566497" />
-      <entry key="H4" value="99.60714406232543" />
-      <entry key="D1" value="113.84187702252288" />
-      <entry key="W1" value="116.5419560508198" />
+      <entry key="MS100" value="3.534652946335026E-6" />
+      <entry key="MS500" value="0.08209205576339221" />
+      <entry key="S2" value="0.8549340708174281" />
+      <entry key="S5" value="2.247148815928036" />
+      <entry key="S10" value="4.005285654753964" />
+      <entry key="S30" value="8.217368478954702" />
+      <entry key="S60" value="10.852794583640108" />
+      <entry key="M2" value="13.279582414541325" />
+      <entry key="M5" value="18.86203759177939" />
+      <entry key="M10" value="29.976487427518236" />
+      <entry key="M15" value="41.50141077822622" />
+      <entry key="M30" value="76.54377916178915" />
+      <entry key="H1" value="148.00131467354254" />
+      <entry key="H2" value="252.23068553209532" />
+      <entry key="H4" value="352.83368795887424" />
+      <entry key="D1" value="484.94712631661525" />
+      <entry key="W1" value="513.947955832912" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -99,35 +101,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Docker.docker-compose.yml.db: Compose Deployment.executor": "Run",
-    "JUnit.AppIntegrationTest.executor": "Run",
-    "JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull.executor": "Run",
-    "JUnit.CountryTest.executor": "Run",
-    "Maven.Group6Coursework [clean].executor": "Run",
-    "Maven.Group6Coursework [package].executor": "Run",
-    "Maven.Group6Coursework [test].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "cities-in-a-country---population-largest-to-smallest",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AppIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CountryTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Group6Coursework [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;condensing-duplication-code&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.db: Compose Deployment">
-    <configuration name="CapitalCityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.napier.sem.App" />
       <module name="Group6Coursework" />
       <extension name="coverage">
         <pattern>
@@ -135,9 +138,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.CapitalCityTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,19 +209,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.CountryTest" />
         <item itemvalue="JUnit.CityTest" />
         <item itemvalue="JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull" />
-        <item itemvalue="JUnit.CapitalCityTest" />
+        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
-        <option value="bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-IU-263.7307.200" />
+        <option value="bundled-jdk-30f59d01ecdd-a9fadf26ba24-intellij.indexing.shared.core-IU-262.12573.28" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.12573.28" />
       </set>
     </attachedChunks>
   </component>
@@ -251,7 +251,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="Condensed all duplicated code into their own respected methods. Reducing the lines of code from around 3000 to around 1400." />
+    <option name="LAST_COMMIT_MESSAGE" value="Condensed all duplicated code into their own respected methods. Reducing the lines of code from around 3000 to around 1400." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
