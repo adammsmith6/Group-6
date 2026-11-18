@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,17 +10,22 @@ import java.util.ArrayList;
  */
 public class CountryTest
 {
+    static App app;
+    static Country coun;
+
+    @BeforeAll
+    static void init() {
+        app = new App();
+        coun = new Country();
+    }
     /**
      * Tests displayCountries with a null list.
      */
     @Test
     void displayCountriesTestNull()
     {
-        // Create application object
-        App app = new App();
-
         // Test null country list
-        app.displayCountries(null);
+        coun.displayCountries(null);
     }
 
     /**
@@ -28,14 +34,12 @@ public class CountryTest
     @Test
     void displayCountriesTestEmpty()
     {
-        // Create application object
-        App app = new App();
 
         // Create empty country list
         ArrayList<Country> countries = new ArrayList<>();
 
         // Test empty country list
-        app.displayCountries(countries);
+        coun.displayCountries(countries);
     }
 
     /**
@@ -44,9 +48,6 @@ public class CountryTest
     @Test
     void displayCountriesTestCountry()
     {
-        // Create application object
-        App app = new App();
-
         // Create country for testing
         Country country = new Country();
         country.code = "GBR";
@@ -63,7 +64,7 @@ public class CountryTest
         countries.add(country);
 
         // Test country list
-        app.displayCountries(countries);
+        coun.displayCountries(countries);
     }
 
     /**
@@ -72,11 +73,9 @@ public class CountryTest
     @Test
     void displayCountriesByContinentTestNull()
     {
-        // Create application object.
-        App app = new App();
 
         // Test the method with a null country list.
-        app.displayCountriesByContinent(null);
+        coun.displayCountriesByContinent(null);
     }
 
 
@@ -86,14 +85,12 @@ public class CountryTest
     @Test
     void displayCountriesByContinentTestEmpty()
     {
-        // Create application object.
-        App app = new App();
 
         // Create an empty country list.
         ArrayList<Country> countries = new ArrayList<>();
 
         // Test the method with an empty country list.
-        app.displayCountriesByContinent(countries);
+        coun.displayCountriesByContinent(countries);
     }
 
 
@@ -103,8 +100,6 @@ public class CountryTest
     @Test
     void displayCountriesByContinentTestCountry()
     {
-        // Create application object.
-        App app = new App();
 
         // Create a country for testing.
         Country country = new Country();
@@ -122,7 +117,7 @@ public class CountryTest
         countries.add(country);
 
         // Test the method with valid country data.
-        app.displayCountriesByContinent(countries);
+        coun.displayCountriesByContinent(countries);
     }
 
     /**
@@ -131,11 +126,8 @@ public class CountryTest
     @Test
     void displayCountriesByRegionTestNull()
     {
-        // Create application object.
-        App app = new App();
-
         // Test the method with a null country list.
-        app.displayCountriesByRegion(null);
+        coun.displayCountriesByRegion(null);
     }
 
 
@@ -145,14 +137,12 @@ public class CountryTest
     @Test
     void displayCountriesByRegionTestEmpty()
     {
-        // Create application object.
-        App app = new App();
 
         // Create an empty country list.
         ArrayList<Country> countries = new ArrayList<>();
 
         // Test the method with an empty country list.
-        app.displayCountriesByRegion(countries);
+        coun.displayCountriesByRegion(countries);
     }
 
 
@@ -162,8 +152,6 @@ public class CountryTest
     @Test
     void displayCountriesByRegionTestCountry()
     {
-        // Create application object.
-        App app = new App();
 
         // Create a country for testing.
         Country country = new Country();
@@ -181,7 +169,7 @@ public class CountryTest
         countries.add(country);
 
         // Test the method with valid country data.
-        app.displayCountriesByRegion(countries);
+        coun.displayCountriesByRegion(countries);
     }
 
     /**
@@ -190,11 +178,9 @@ public class CountryTest
     @Test
     void displayTopNCountriesTestNull()
     {
-        // Create application object.
-        App app = new App();
 
         // Test the method with a null country list.
-        app.displayTopNCountries(null);
+        coun.displayTopNCountries(null);
     }
 
 
@@ -204,14 +190,11 @@ public class CountryTest
     @Test
     void displayTopNCountriesTestEmpty()
     {
-        // Create application object.
-        App app = new App();
-
         // Create an empty country list.
         ArrayList<Country> countries = new ArrayList<>();
 
         // Test the method with an empty country list.
-        app.displayTopNCountries(countries);
+        coun.displayTopNCountries(countries);
     }
 
 
@@ -221,8 +204,6 @@ public class CountryTest
     @Test
     void displayTopNCountriesTestCountry()
     {
-        // Create application object.
-        App app = new App();
 
         // Create a country for testing.
         Country country = new Country();
@@ -240,7 +221,7 @@ public class CountryTest
         countries.add(country);
 
         // Test the method with valid country data.
-        app.displayTopNCountries(countries);
+        coun.displayTopNCountries(countries);
     }
 
     /**
@@ -249,11 +230,9 @@ public class CountryTest
     @Test
     void displayTopNCountriesByContinentTestNull()
     {
-        // Create application object.
-        App app = new App();
 
         // Test the method with a null country list.
-        app.displayTopNCountriesByContinent(null);
+        coun.displayTopNCountriesByContinent(null);
     }
 
 
@@ -263,14 +242,12 @@ public class CountryTest
     @Test
     void displayTopNCountriesByContinentTestEmpty()
     {
-        // Create application object.
-        App app = new App();
 
         // Create an empty country list.
         ArrayList<Country> countries = new ArrayList<>();
 
         // Test the method with an empty country list.
-        app.displayTopNCountriesByContinent(countries);
+        coun.displayTopNCountriesByContinent(countries);
     }
 
 
@@ -280,8 +257,6 @@ public class CountryTest
     @Test
     void displayTopNCountriesByContinentTestCountry()
     {
-        // Create application object.
-        App app = new App();
 
         // Create a country for testing.
         Country country = new Country();
@@ -299,7 +274,7 @@ public class CountryTest
         countries.add(country);
 
         // Test the method with valid country data.
-        app.displayTopNCountriesByContinent(countries);
+        coun.displayTopNCountriesByContinent(countries);
     }
 
     /**
@@ -308,11 +283,9 @@ public class CountryTest
     @Test
     void displayTopNCountriesByRegionTestNull()
     {
-        // Create application object.
-        App app = new App();
 
         // Test the method with a null country list.
-        app.displayTopNCountriesByRegion(null);
+        coun.displayTopNCountriesByRegion(null);
     }
 
 
@@ -322,14 +295,11 @@ public class CountryTest
     @Test
     void displayTopNCountriesByRegionTestEmpty()
     {
-        // Create application object.
-        App app = new App();
-
         // Create an empty country list.
         ArrayList<Country> countries = new ArrayList<>();
 
         // Test the method with an empty country list.
-        app.displayTopNCountriesByRegion(countries);
+        coun.displayTopNCountriesByRegion(countries);
     }
 
 
@@ -339,9 +309,6 @@ public class CountryTest
     @Test
     void displayTopNCountriesByRegionTestCountry()
     {
-        // Create application object.
-        App app = new App();
-
         // Create a country for testing.
         Country country = new Country();
         country.code = "DEU";
@@ -358,7 +325,7 @@ public class CountryTest
         countries.add(country);
 
         // Test the method with valid country data.
-        app.displayTopNCountriesByRegion(countries);
+        coun.displayTopNCountriesByRegion(countries);
     }
 
 }
