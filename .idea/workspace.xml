@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5010af82-4a0c-46bb-959e-7ec9ddfef193" name="Changes" comment="Condensed all duplicated code into their own respected methods. Reducing the lines of code from around 3000 to around 1400.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/napier/sem/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/napier/sem/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
@@ -25,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="populationreport" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,61 +34,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000053594542" />
-      <entry key="S2" value="1.0143883586242408" />
-      <entry key="S5" value="1.2778556214174628" />
-      <entry key="S10" value="1.745459476059692" />
-      <entry key="S30" value="2.4393327957342956" />
-      <entry key="S60" value="2.6966780696817647" />
-      <entry key="M2" value="2.851970180258167" />
-      <entry key="M5" value="3.8013785978464134" />
-      <entry key="M10" value="8.247204203435345" />
-      <entry key="M15" value="14.049101453485802" />
-      <entry key="M30" value="30.00391637893162" />
-      <entry key="H1" value="48.96625028512456" />
-      <entry key="H2" value="64.75574111494227" />
-      <entry key="H4" value="75.21413253176554" />
-      <entry key="D1" value="85.68199685447173" />
-      <entry key="W1" value="87.66389667015552" />
+      <entry key="MS100" value="0.02392294323164356" />
+      <entry key="MS500" value="0.6233698733769999" />
+      <entry key="S2" value="1.4516128425284318" />
+      <entry key="S5" value="1.7550363331143146" />
+      <entry key="S10" value="1.8762439525853287" />
+      <entry key="S30" value="2.205119702459642" />
+      <entry key="S60" value="2.8913829399212707" />
+      <entry key="M2" value="3.9633151821177424" />
+      <entry key="M5" value="5.986066903842658" />
+      <entry key="M10" value="9.785291679128157" />
+      <entry key="M15" value="16.225116393323372" />
+      <entry key="M30" value="44.994444696747465" />
+      <entry key="H1" value="105.02787705339544" />
+      <entry key="H2" value="182.22862184586523" />
+      <entry key="H4" value="249.4172906104883" />
+      <entry key="D1" value="330.9119967805207" />
+      <entry key="W1" value="348.04008769934575" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.5390696928970145E-27" />
-      <entry key="MS500" value="4.3396195521259476E-6" />
-      <entry key="S2" value="0.045641815840159555" />
-      <entry key="S5" value="0.2909009675441708" />
-      <entry key="S10" value="0.5393523593571932" />
-      <entry key="S30" value="0.8139996052681903" />
-      <entry key="S60" value="0.9022195151857744" />
-      <entry key="M2" value="0.9509307021984208" />
-      <entry key="M5" value="1.1652998887285682" />
-      <entry key="M10" value="2.305216021869214" />
-      <entry key="M15" value="3.9462291349725804" />
-      <entry key="M30" value="8.890153845490095" />
-      <entry key="H1" value="15.20847410533747" />
-      <entry key="H2" value="20.68959369580618" />
-      <entry key="H4" value="24.398623420264826" />
-      <entry key="D1" value="28.160944237820356" />
-      <entry key="W1" value="28.878214871198967" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0003157011107482" />
+      <entry key="S2" value="1.1705955946338211" />
+      <entry key="S5" value="1.9099563908274715" />
+      <entry key="S10" value="2.8224225437637993" />
+      <entry key="S30" value="4.124957093464982" />
+      <entry key="S60" value="4.768910676647983" />
+      <entry key="M2" value="5.29423868534326" />
+      <entry key="M5" value="5.9139880622359495" />
+      <entry key="M10" value="6.473363376809464" />
+      <entry key="M15" value="7.446663862538286" />
+      <entry key="M30" value="13.139685129864597" />
+      <entry key="H1" value="25.728866552970995" />
+      <entry key="H2" value="42.06089342836979" />
+      <entry key="H4" value="56.545211082968066" />
+      <entry key="D1" value="74.50694113459956" />
+      <entry key="W1" value="78.3363688484818" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.4371410188891694E-11" />
-      <entry key="MS500" value="0.00807794429840098" />
-      <entry key="S2" value="0.3460968838870927" />
-      <entry key="S5" value="1.1440991140141221" />
-      <entry key="S10" value="2.0278885143367713" />
-      <entry key="S30" value="3.1530883104006175" />
-      <entry key="S60" value="3.546510461649761" />
-      <entry key="M2" value="3.7760305323922427" />
-      <entry key="M5" value="4.952955514019984" />
-      <entry key="M10" value="10.537754080741337" />
-      <entry key="M15" value="17.97854908753823" />
-      <entry key="M30" value="38.87604776434774" />
-      <entry key="H1" value="64.1600503149721" />
-      <entry key="H2" value="85.4356568566497" />
-      <entry key="H4" value="99.60714406232543" />
-      <entry key="D1" value="113.84187702252288" />
-      <entry key="W1" value="116.5419560508198" />
+      <entry key="MS100" value="0.050179513439695844" />
+      <entry key="MS500" value="0.8206174213101635" />
+      <entry key="S2" value="2.2058859799342447" />
+      <entry key="S5" value="3.397827744755621" />
+      <entry key="S10" value="4.508901138915304" />
+      <entry key="S30" value="6.235187156747434" />
+      <entry key="S60" value="7.600668248036987" />
+      <entry key="M2" value="9.22091236059636" />
+      <entry key="M5" value="11.88055634417933" />
+      <entry key="M10" value="16.246209183927547" />
+      <entry key="M15" value="23.660606692152843" />
+      <entry key="M30" value="58.120585919482565" />
+      <entry key="H1" value="130.7409001772774" />
+      <entry key="H2" value="224.27543646644548" />
+      <entry key="H4" value="305.9526617969509" />
+      <entry key="D1" value="405.4167109874803" />
+      <entry key="W1" value="426.3761204300974" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -112,7 +113,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "cities-in-a-country---population-largest-to-smallest",
+    "git-widget-placeholder": "condensing-duplication-code",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -126,8 +127,9 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.db: Compose Deployment">
-    <configuration name="CapitalCityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.napier.sem.App" />
       <module name="Group6Coursework" />
       <extension name="coverage">
         <pattern>
@@ -135,9 +137,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.napier.sem" />
-      <option name="MAIN_CLASS_NAME" value="com.napier.sem.CapitalCityTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,19 +208,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
         <item itemvalue="JUnit.CountryTest" />
         <item itemvalue="JUnit.CityTest" />
         <item itemvalue="JUnit.CapitalCityTest.displayTopNCapitalCitiesByContinentTestNull" />
-        <item itemvalue="JUnit.CapitalCityTest" />
+        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
-        <option value="bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-IU-263.7307.200" />
+        <option value="bundled-jdk-30f59d01ecdd-a9fadf26ba24-intellij.indexing.shared.core-IU-262.12573.28" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.12573.28" />
       </set>
     </attachedChunks>
   </component>
@@ -251,7 +250,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="Condensed all duplicated code into their own respected methods. Reducing the lines of code from around 3000 to around 1400." />
+    <option name="LAST_COMMIT_MESSAGE" value="Condensed all duplicated code into their own respected methods. Reducing the lines of code from around 3000 to around 1400." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

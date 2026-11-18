@@ -27,6 +27,7 @@ public class App {
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
+        Country countryReports = new Country(a.con);
 
         // ---------------
         // Use Case 1
@@ -43,7 +44,7 @@ public class App {
                 "ORDER BY country.Population DESC");
 
         // Display the country population report.
-        a.displayCountries(countries);
+        countryReports.displayCountries(countries);
 
 
         // --------------
@@ -58,7 +59,7 @@ public class App {
                 a.getCountriesByContinent("Europe");
 
         // Display the countries in Europe.
-        a.displayCountries(countriesByContinent);
+        countryReports.displayCountries(countriesByContinent);
 
 
         // ---------------
@@ -74,7 +75,7 @@ public class App {
                 a.getCountriesByRegion("Western Europe");
 
         // Display the countries in Western Europe.
-        a.displayCountries(countriesByRegion);
+        countryReports.displayCountries(countriesByRegion);
 
 
         // -------------------
@@ -91,7 +92,7 @@ public class App {
                 a.getTopNCountries(5);
 
         // Display the top 5 countries.
-        a.displayCountries(topCountries);
+        countryReports.displayCountries(topCountries);
 
 
         // -------------------
@@ -107,7 +108,7 @@ public class App {
                 a.getTopNCountriesByContinent("Europe", 5);
 
         // Display the top 5 countries in Europe.
-        a.displayCountries(topCountriesByContinent);
+        countryReports.displayCountries(topCountriesByContinent);
 
 
         // -------------------------
@@ -124,7 +125,7 @@ public class App {
                 a.getTopNCountriesByRegion("Western Europe", 5);
 
         // Display the top 5 countries in Western Europe.
-        a.displayCountries(topCountriesByRegion);
+        countryReports.displayCountries(topCountriesByRegion);
 
 
         // -------------------------
@@ -1178,53 +1179,7 @@ public class App {
      -------------------------------
      */
 
-    /**
-     * Displays a report of countries including their code, name,
-     * continent, region, population and capital.
-     *
-     * @param countries List of countries to be displayed.
-     */
-    public void displayCountries(ArrayList<Country> countries)
-    {
-        // Check if the list is null.
-        if (countries == null)
-        {
-            System.out.println("No country information available.");
-            return;
-        }
 
-        // Check if the list contains no countries.
-        if (countries.isEmpty())
-        {
-            System.out.println("No countries found.");
-            return;
-        }
-
-        // Display the column headings for the country report.
-        System.out.printf(
-                "%-5s %-35s %-20s %-30s %-15s %-30s%n",
-                "Code",
-                "Name",
-                "Continent",
-                "Region",
-                "Population",
-                "Capital"
-        );
-
-        // Display each country in the report.
-        for (Country country : countries)
-        {
-            System.out.printf(
-                    "%-5s %-35s %-20s %-30s %-15d %-30s%n",
-                    country.code,
-                    country.name,
-                    country.continent,
-                    country.region,
-                    country.population,
-                    country.capital
-            );
-        }
-    }
 
     /**
      * Displays a report of cities including their name, country, district and population.
