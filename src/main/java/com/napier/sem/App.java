@@ -57,7 +57,7 @@ public class App {
         // Display the countries in Europe.
         countryReports.displayCountries(countriesByContinent);
 
-        countryReports.displayCountriesByContinent(countriesByContinent);
+        countryReports.displayCountries(countriesByContinent);
 
         // --------------------------------------------------
         // USE CASE 3: Countries in Western Europe.
@@ -109,7 +109,7 @@ public class App {
         countryReports.displayCountries(topCountriesByContinent);
 
 
-        countryReports.displayTopNCountriesByContinent(
+        countryReports.displayCountries(
                 topCountriesByContinent);
 
         // --------------------------------------------------
