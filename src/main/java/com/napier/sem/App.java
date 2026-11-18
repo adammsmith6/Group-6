@@ -26,18 +26,29 @@ public class App {
         }else{
             a.connect(args[0], Integer.parseInt(args[1]));
         }
-// Use Case 3
+
+
+        // ---------------
+        // Use Case 1
+        // ---------------
         System.out.println(
                 "\n========== USE CASE 1: Countries in the World ==========\n"
         );
-        // Use Case 1
         // Retrieve all countries ordered from largest
         // population to smallest.
-         ArrayList<Country> countries = a.getCountries();
+        ArrayList<Country> countries = a.getCountries("SELECT country.Code, country.Name, country.Continent, " +
+                "country.Region, country.Population, city.Name AS Capital " +
+                "FROM country " +
+                "LEFT JOIN city ON country.Capital = city.ID " +
+                "ORDER BY country.Population DESC");
 
-//         Display the country population report.
-         a.displayCountries(countries);
-// Use Case 3
+        // Display the country population report.
+        a.displayCountries(countries);
+
+
+        // --------------
+        // Use Case 2
+        // --------------
         System.out.println(
                 "\n========== USE CASE 2: Countries in EUROPE ==========\n"
         );
@@ -47,10 +58,12 @@ public class App {
                 a.getCountriesByContinent("Europe");
 
         // Display the countries in Europe.
-        a.displayCountriesByContinent(countriesByContinent);
+        a.displayCountries(countriesByContinent);
 
 
+        // ---------------
         // Use Case 3
+        // ---------------
         System.out.println(
                 "\n========== USE CASE 3: WESTERN EUROPE ==========\n"
         );
@@ -61,11 +74,12 @@ public class App {
                 a.getCountriesByRegion("Western Europe");
 
         // Display the countries in Western Europe.
-        a.displayCountriesByRegion(countriesByRegion);
+        a.displayCountries(countriesByRegion);
 
-        // -------------------------
+
+        // -------------------
         // Use Case 4
-        // -------------------------
+        // -------------------
 
         System.out.println(
                 "\n========== USE CASE 4: TOP 5 COUNTRIES ==========\n"
@@ -77,11 +91,12 @@ public class App {
                 a.getTopNCountries(5);
 
         // Display the top 5 countries.
-        a.displayTopNCountries(topCountries);
+        a.displayCountries(topCountries);
 
-        // -------------------------
+
+        // -------------------
         // Use Case 5
-        // -------------------------
+        // -------------------
 
         System.out.println(
                 "\n========== USE CASE 5: TOP 5 COUNTRIES IN EUROPE ==========\n"
@@ -92,7 +107,8 @@ public class App {
                 a.getTopNCountriesByContinent("Europe", 5);
 
         // Display the top 5 countries in Europe.
-        a.displayTopNCountriesByContinent(topCountriesByContinent);
+        a.displayCountries(topCountriesByContinent);
+
 
         // -------------------------
         // Use Case 6
@@ -108,7 +124,9 @@ public class App {
                 a.getTopNCountriesByRegion("Western Europe", 5);
 
         // Display the top 5 countries in Western Europe.
-        a.displayTopNCountriesByRegion(topCountriesByRegion);
+        a.displayCountries(topCountriesByRegion);
+
+
         // -------------------------
         // Use Case 7
         // -------------------------
@@ -119,7 +137,11 @@ public class App {
 
         // Retrieve all cities in the world,
         // ordered from largest population to smallest.
-        ArrayList<City> allCities = a.getCities();
+        ArrayList<City> allCities = a.getCities(
+                            "SELECT city.Name, country.Name as 'Country', city.District, city.Population " +
+                                "FROM city " +
+                                "LEFT JOIN country ON city.CountryCode = country.Code " +
+                                "ORDER BY city.Population DESC");
 
         // Display all cities in the world.
         a.displayCities(allCities);
@@ -139,9 +161,12 @@ public class App {
                 a.getCitiesByContinent("Asia");
 
         // Display all cities in Asia.
-        a.displayCitiesByContinent(citiesByContinent);
+        a.displayCities(citiesByContinent);
 
-        // ** Use Case 9 **
+
+        // -------------------------
+        // Use Case 9
+        // -------------------------
 
         // all the cities in a region organised by largest population to smallest.
 
@@ -150,13 +175,15 @@ public class App {
         );
 
         // Retrieve all cities in the specified region ordered from largest population to smallest.
-        ArrayList<City> citiesInRegion = a.getCitesInRegion("Western Europe");
+        ArrayList<City> citiesInRegion = a.getCitiesInRegion("Western Europe");
 
         // Display the cities in a region report ordered by population.
-        a.displayCitiesInRegion(citiesInRegion);
+        a.displayCities(citiesInRegion);
 
 
-        // ** Use Case 10 **
+        // -------------------------
+        // Use Case 10
+        // -------------------------
 
         // all the cities in a country organised by largest population to smallest.
 
@@ -165,12 +192,15 @@ public class App {
         );
 
         // Retrieve all cities in the specified country ordered from largest population to smallest.
-        ArrayList<City> citiesInCountry = a.getCitesInCountry("United Kingdom");
+        ArrayList<City> citiesInCountry = a.getCitiesInCountry("United Kingdom");
 
         // Display the cities in a country report ordered by population.
-        a.displayCitiesInCountry(citiesInCountry);
+        a.displayCities(citiesInCountry);
 
-        // ** Use Case 11 **
+
+        // -------------------------
+        // Use Case 11
+        // -------------------------
 
         // all the cities in a district organised by largest population to smallest.
 
@@ -179,12 +209,15 @@ public class App {
         );
 
         // Retrieve all cities in the specified district ordered from largest population to smallest.
-        ArrayList<City> citiesInDistrict = a.getCitesInDistrict("Scotland");
+        ArrayList<City> citiesInDistrict = a.getCitiesInDistrict("Scotland");
 
         // Display the cities in a district report ordered by population.
-        a.displayCitiesInDistrict(citiesInDistrict);
+        a.displayCities(citiesInDistrict);
 
-        // ** Use Case 12 **
+
+        // -------------------------
+        // Use Case 12
+        // -------------------------
 
         // the top n populated cities in the world where n is defined by the user
 
@@ -197,9 +230,12 @@ public class App {
                 a.getTopNCities(10);
 
         // Display the top 10 populated cities in the world.
-        a.displayTopNCities(topNCities);
+        a.displayCities(topNCities);
 
-        // ** Use Case 13 **
+
+        // -------------------------
+        // Use Case 13
+        // -------------------------
 
         // the top n populated cities in a specified continent where n is defined by the user.
 
@@ -212,9 +248,12 @@ public class App {
                 a.getTopNCitiesByContinent("Europe", 15);
 
         // Display the top 10 populated cities in the specified continent.
-        a.displayTopNCitiesByContinent(topNCitiesByContinent);
+        a.displayCities(topNCitiesByContinent);
 
-        // ** Use Case 14 **
+
+        // -------------------------
+        // Use Case 14
+        // -------------------------
 
         // the top n populated cities in a specified region where n is defined by the user.
 
@@ -227,9 +266,12 @@ public class App {
                 a.getTopNCitiesByRegion("Eastern Africa", 8);
 
         // Display the top 8 populated cities in the specified region.
-        a.displayTopNCitiesByRegion(topNCitiesByRegion);
+        a.displayCities(topNCitiesByRegion);
 
-        // ** Use Case 15 **
+
+        // -------------------------
+        // Use Case 15
+        // -------------------------
 
         // the top n populated cities in a specified country where n is defined by the user.
 
@@ -242,26 +284,24 @@ public class App {
                 a.getTopNCitiesByCountry("Italy", 6);
 
         // Display the top 6 populated cities in the specified country.
-        a.displayTopNCitiesByCountry(topNCitiesByCountry);
+        a.displayCities(topNCitiesByCountry);
 
 
+        // -------------------------
+        // Use Case 16
+        // -------------------------
+
+        // Get the top 5 populated cities in California.
         System.out.println(
                 "\n========== USE CASE 16: Top 5 populated city in California ==========\n"
         );
         // Use Case 16:
         // Get the top 5 populated cities in California.
-        ArrayList<City> cities =
+        ArrayList<City> topNCitiesByDistrict =
                 a.getTopNCitiesByDistrict("California", 5);
 
         // Display the top 5 cities.
-        a.displayTopNCitiesByDistrict(cities);
-
-        // Retrieve all cities ordered from largest
-        // population to smallest.
-        // ArrayList<City> cities = a.getCities();
-
-        // Display the city population report.
-        // a.displayCities(cities);
+        a.displayCities(topNCitiesByDistrict);
 
 
         // -------------------------
@@ -272,9 +312,20 @@ public class App {
                 "\n========== USE CASE 17: CAPITAL CITY REPORT IN WORLD ==========\n"
         );
 
+        // SQL for Use Case 17:
+        // Retrieve all capital cities,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT city.Name, country.Name as 'Country', city.Population " +
+                        "FROM city " +
+                        "LEFT JOIN country ON city.CountryCode = country.Code " +
+                        "WHERE country.Capital = city.Id " +
+                        "ORDER BY city.Population DESC";
+
+
         // Retrieve all capital cities ordered from largest
         // population to smallest.
-        ArrayList<CapitalCity> capitalCities = a.getCapitalCities();
+        ArrayList<CapitalCity> capitalCities = a.getCapitalCities(sql);
 
         // Display the capital city population report.
         a.displayCapitalCities(capitalCities);
@@ -294,7 +345,7 @@ public class App {
                 a.getCapitalCitiesByContinent("South America");
 
         // Display the capital cities in South America.
-        a.displayCapitalCitiesByContinent(capitalCitiesByContinent);
+        a.displayCapitalCities(capitalCitiesByContinent);
 
 
 
@@ -312,7 +363,7 @@ public class App {
                 a.getCapitalCitiesByRegion("Caribbean");
 
         // Display the capital cities in the Caribbean region.
-        a.displayCapitalCitiesByRegion(capitalCitiesByRegion);
+        a.displayCapitalCities(capitalCitiesByRegion);
 
 
         // -------------------------
@@ -329,35 +380,59 @@ public class App {
                 a.getTopNCapitalCities(5);
 
         // Display the top 5 capital cities in the world.
-        a.displayTopNCapitalCities(topCapitalCities);
+        a.displayCapitalCities(topCapitalCities);
 
-// -------------------------
+
+        // -------------------------
         // Use Case 21 - Top 6 capital cities in Asia
         // -------------------------
+
         System.out.println("\n========== USE CASE 21: TOP 6 CAPITAL CITIES IN ASIA ==========\n");
+
         ArrayList<CapitalCity> topCapitalsByContinent =
                 a.getTopNCapitalCitiesByContinent("Asia", 6);
-        a.displayTopNCapitalCitiesByContinent(topCapitalsByContinent);
+
+        a.displayCapitalCities(topCapitalsByContinent);
 
         // -------------------------
         // Use Case 22 - Top 6 capital cities in Eastern Asia
         // -------------------------
+
         System.out.println("\n========== USE CASE 22: TOP 6 CAPITAL CITIES IN EASTERN ASIA ==========\n");
+
         ArrayList<CapitalCity> topCapitalsByRegion =
                 a.getTopNCapitalCitiesByRegion("Eastern Asia", 6);
-        a.displayTopNCapitalCitiesByRegion(topCapitalsByRegion);
 
-
+        a.displayCapitalCities(topCapitalsByRegion);
 
 
         // -------------------------
         // Use Case 23
         // -------------------------
+        /**
+         * Use Case 23:
+         * Displays the total population, city population,
+         * and non-city population for each continent.
+         */
         System.out.println(
                 "\n========== USE CASE 23: POPULATION BY CONTINENT ==========\n"
         );
 
-        a.displayPopulationByContinent();
+        // Calculate city population for each country first.
+        // Then combine countries by continent.
+        String popForContinent =
+                "SELECT country.Continent AS Name, " +
+                        "SUM(country.Population) AS TotalPopulation, " +
+                        "SUM(COALESCE(city_pop.CityPopulation, 0)) AS CityPopulation " +
+                        "FROM country " +
+                        "LEFT JOIN ( " +
+                        "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
+                        "    FROM city " +
+                        "    GROUP BY CountryCode " +
+                        ") city_pop ON country.Code = city_pop.CountryCode " +
+                        "GROUP BY country.Continent " +
+                        "ORDER BY country.Continent";
+        a.displayPopulation(popForContinent);
 
 
         // -------------------------
@@ -366,8 +441,26 @@ public class App {
         System.out.println(
                 "\n========== USE CASE 24: POPULATION BY REGION ==========\n"
         );
-
-        a.displayPopulationByRegion();
+/**
+ * Use Case 24:
+ * Displays the total population, city population,
+ * and non-city population for each region.
+ */
+        // Calculate city population for each country first.
+        // Then combine countries by region.
+        String popForRegion =
+                "SELECT country.Region AS Name, " +
+                        "SUM(country.Population) AS TotalPopulation, " +
+                        "SUM(COALESCE(city_pop.CityPopulation, 0)) AS CityPopulation " +
+                        "FROM country " +
+                        "LEFT JOIN ( " +
+                        "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
+                        "    FROM city " +
+                        "    GROUP BY CountryCode " +
+                        ") city_pop ON country.Code = city_pop.CountryCode " +
+                        "GROUP BY country.Region " +
+                        "ORDER BY country.Region";
+        a.displayPopulation(popForRegion);
 
 
         // -------------------------
@@ -377,7 +470,21 @@ public class App {
                 "\n========== USE CASE 25: POPULATION BY COUNTRY ==========\n"
         );
 
-        a.displayPopulationByCountry();
+        // Get the total population and the population
+        // living in listed cities for each country.
+        String popForCountry =
+                "SELECT country.Name AS Name, " +
+                        "country.Population AS TotalPopulation, " +
+                        "COALESCE(city_pop.CityPopulation, 0) AS CityPopulation " +
+                        "FROM country " +
+                        "LEFT JOIN ( " +
+                        "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
+                        "    FROM city " +
+                        "    GROUP BY CountryCode " +
+                        ") city_pop ON country.Code = city_pop.CountryCode " +
+                        "ORDER BY country.Name";
+
+        a.displayPopulation(popForCountry);
 
 
         // Disconnect from the database.
@@ -450,21 +557,10 @@ public class App {
      * @return An ArrayList containing all countries,
      *         or null if the data cannot be retrieved.
      */
-    public ArrayList<Country> getCountries()
+    public ArrayList<Country> getCountries(String sql)
     {
         try
-        {
-            // SQL for Use Case 1:
-            // Retrieve all countries and their capital city names,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT country.Code, country.Name, country.Continent, " +
-                            "country.Region, country.Population, city.Name AS Capital " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Capital = city.ID " +
-                            "ORDER BY country.Population DESC";
-
-            // Create a statement to execute the SQL query.
+        {   // Create a statement to execute the SQL query.
             Statement stmt = con.createStatement();
 
             // Execute the query and store the returned rows.
@@ -503,6 +599,584 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * Gets all countries in a specified continent from the database,
+     * ordered by population from largest to smallest.
+     *
+     * @param continent The continent to search for.
+     * @return An ArrayList containing all countries in the specified continent,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<Country> getCountriesByContinent(String continent)
+    {
+        // SQL for Use Case 2:
+        // Retrieve all countries in a specified continent,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT country.Code, country.Name, country.Continent, " +
+                        "country.Region, country.Population, city.Name AS Capital " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
+                        "WHERE country.Continent = '" + continent + "' " +
+                        "ORDER BY country.Population DESC";
+
+        return getCountries(sql);
+    }
+
+
+    /**
+     * Gets all countries in a specified region from the database,
+     * ordered by population from largest to smallest.
+     *
+     * @param region The region to search for.
+     * @return An ArrayList containing all countries in the specified region,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<Country> getCountriesByRegion(String region)
+    {
+        // SQL for Use Case 3:
+        // Retrieve all countries in a specified region,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT country.Code, country.Name, country.Continent, " +
+                        "country.Region, country.Population, city.Name AS Capital " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
+                        "WHERE country.Region = '" + region + "' " +
+                        "ORDER BY country.Population DESC";
+
+        return getCountries(sql);
+    }
+
+
+    /**
+     * Gets the top N populated countries in the world,
+     * ordered by population from largest to smallest.
+     *
+     * @param n The number of countries to retrieve.
+     * @return An ArrayList containing the top N populated countries,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<Country> getTopNCountries(int n)
+    {
+        // SQL for Use Case 4:
+        // Retrieve the top N populated countries in the world,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT country.Code, country.Name, country.Continent, " +
+                        "country.Region, country.Population, city.Name AS Capital " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
+                        "ORDER BY country.Population DESC " +
+                        "LIMIT " + n;
+
+        return getCountries(sql);
+    }
+
+
+    /**
+     * Gets the top N populated countries in a specified continent,
+     * ordered by population from largest to smallest.
+     *
+     * @param continent The continent to search for.
+     * @param n The number of countries to retrieve.
+     * @return An ArrayList containing the top N populated countries
+     *         in the specified continent, or null if the data
+     *         cannot be retrieved.
+     */
+    public ArrayList<Country> getTopNCountriesByContinent(String continent, int n)
+    {
+        // SQL for Use Case 5:
+        // Retrieve the top N populated countries in a specified continent,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT country.Code, country.Name, country.Continent, " +
+                        "country.Region, country.Population, city.Name AS Capital " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
+                        "WHERE country.Continent = '" + continent + "' " +
+                        "ORDER BY country.Population DESC " +
+                        "LIMIT " + n;
+
+        return getCountries(sql);
+    }
+
+
+    /**
+     * Gets the top N populated countries in a specified region,
+     * ordered by population from largest to smallest.
+     *
+     * @param region The region to search for.
+     * @param n The number of countries to retrieve.
+     * @return An ArrayList containing the top N populated countries
+     *         in the specified region, or null if the data
+     *         cannot be retrieved.
+     */
+    public ArrayList<Country> getTopNCountriesByRegion(String region, int n)
+    {       // SQL for Use Case 6:
+        // Retrieve the top N populated countries in a specified region,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT country.Code, country.Name, country.Continent, " +
+                        "country.Region, country.Population, city.Name AS Capital " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
+                        "WHERE country.Region = '" + region + "' " +
+                        "ORDER BY country.Population DESC " +
+                        "LIMIT " + n;
+
+        return getCountries(sql);
+    }
+
+
+    /**
+     * Gets all cities in the world from the database
+     * ordered by population from largest to smallest.
+     *
+     * @return An ArrayList containing all cities,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCities(String sql)
+    {
+        try
+        {
+            // Create a statement to execute the SQL query.
+            Statement stmt = con.createStatement();
+
+            // Execute the query and store the returned rows.
+            ResultSet rset = stmt.executeQuery(sql);
+
+            // Create a list to store all cities retrieved from the database.
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                // Create a new City object for the current row.
+                City city = new City();
+
+                // Store the database values in the City object.
+                city.name = rset.getString("Name");
+                city.country = rset.getString("Country");
+                city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+                // Add the city to the list.
+                cities.add(city);
+            }
+
+            // Return the completed list of cities.
+            return cities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the city information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details.");
+
+            return null;
+        }
+    }
+
+
+
+    /**
+     * Gets all cities in a region from the database
+     * ordered by population from largest to smallest
+     *
+     * @param region The region to search for
+     * @return An ArrayList containing all cities in a region,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCitiesInRegion(String region)
+    {
+            // SQL for Use Case 9:
+            // Retrieve all cities from a region
+            // Ordered from largest population to smallest
+            String sql =
+                    "SELECT city.Name, country.Name as 'Country', city.District, city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Region = '" + region + "' "
+                            + "ORDER BY city.population DESC";
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Gets all cities in a country from the database
+     * ordered by population from largest to smallest
+     *
+     * @param country The country to search for
+     * @return An ArrayList containing all cities in a country,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCitiesInCountry(String country)
+    {
+            // SQL for Use Case 10:
+            // Retrieve all cities from a country
+            // Ordered from largest population to smallest
+            String sql =
+                    "SELECT city.Name, country.Name as 'Country', city.District, city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Name =  '" + country + "' "
+                            + "ORDER BY city.population DESC";
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Gets all cities in a district from the database
+     * ordered by population from largest to smallest
+     *
+     * @param district The district to search for
+     * @return An ArrayList containing all cities in a district,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<City> getCitiesInDistrict(String district)
+    {
+            // SQL for Use Case 11:
+            // Retrieve all cities from a district
+            // Ordered from largest population to smallest
+            String sql =
+                    "SELECT city.Name, country.Name as 'Country', city.District, city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.district = '" + district + "' "
+                            + "ORDER BY city.population DESC";
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Gets the top n populated cities in the world.
+     *
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of the world, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCities(int n)
+    {
+            // SQL for Use Case 12
+            // Retrieve the top N cities in the world
+            String sql =
+                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "ORDER BY city.Population DESC "
+                            + "LIMIT " + n;
+
+            return getCities(sql);
+
+    }
+
+
+    /**
+     * Gets the top n populated cities in a continent.
+     *
+     * @param continent The continent to search for.
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of a specified continent, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCitiesByContinent(String continent, int n)
+    {
+            // SQL for Use Case 13
+            // Retrieve the top N cities in a specified continent.
+            String sql =
+                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = '" + continent + "' "
+                            + "ORDER BY city.Population DESC "
+                            + "LIMIT " + n;
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Gets the top n populated cities in a region.
+     *
+     * @param region The region to search for.
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of a specified region, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCitiesByRegion(String region, int n)
+    {
+            // SQL for Use Case 14
+            // Retrieve the top N cities in a specified region.
+            String sql =
+                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.region = '"  + region + "' "
+                            + "ORDER BY city.Population DESC "
+                            + "LIMIT " + n;
+
+           return getCities(sql);
+    }
+
+
+    /**
+     * Gets the top n populated cities in a country.
+     *
+     * @param country The country to search for.
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top n populated cities of a specified country, or null if information cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCitiesByCountry(String country, int n)
+    {
+            // SQL for Use Case 15
+            // Retrieve the top N cities in a specified country.
+            String sql =
+                    "SELECT city.Name, city.District, city.Population "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Name = '" + country + "' "
+                            + "ORDER BY city.Population DESC "
+                            + "LIMIT " + n;
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Gets all capital cities in the world from the database
+     * ordered by population from largest to smallest.
+     *
+     * @return An ArrayList containing all capital cities,
+     *         or null if the data cannot be retrieved.
+     */
+    public ArrayList<CapitalCity> getCapitalCities(String sql)
+    {
+        try
+        {
+            // Create a statement to execute the SQL query.
+            Statement stmt = con.createStatement();
+
+            // Execute the query and store the returned rows.
+            ResultSet rset = stmt.executeQuery(sql);
+
+            // Create a list to store all capital cities retrieved from the database.
+            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
+
+            // Process each row returned by the database.
+            while (rset.next())
+            {
+                // Create a new CapitalCity object for the current row.
+                CapitalCity capitalCity = new CapitalCity();
+
+                // Store the database values in the CapitalCity object.
+                capitalCity.name = rset.getString("Name");
+                capitalCity.country = rset.getString("Country");
+                capitalCity.population = rset.getInt("Population");
+
+                // Add the capital city to the list.
+                capitalCities.add(capitalCity);
+            }
+
+            // Return the completed list of city.
+            return capitalCities;
+        }
+        catch (Exception e)
+        {
+            // Display an error if the city information cannot be retrieved.
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital city details.");
+
+            return null;
+        }
+    }
+
+
+    /**
+     * Gets the top N populated cities in a specified district,
+     * ordered by population from largest to smallest.
+     *
+     * @param district The district to search for.
+     * @param n The number of cities to retrieve.
+     * @return An ArrayList containing the top N populated cities
+     *         in the specified district, or null if the data
+     *         cannot be retrieved.
+     */
+    public ArrayList<City> getTopNCitiesByDistrict(String district, int n)
+    {
+            // SQL for Use Case 16:
+            // Retrieve the top N populated cities in a specified district,
+            // ordered from largest population to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, " +
+                            "city.District, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE city.District = '" + district + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Gets all capital cities in a specified continent,
+     * ordered by population from largest to smallest.
+     *
+     * @param continent The continent to search for.
+     * @return An ArrayList containing capital cities in the
+     *         specified continent, or null if the data
+     *         cannot be retrieved.
+     */
+    public ArrayList<CapitalCity> getCapitalCitiesByContinent(String continent)
+    {
+            // SQL for Use Case 18:
+            // Retrieve all capital cities in a specified continent,
+            // ordered from largest population to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Capital = city.ID " +
+                            "AND country.Continent = '" + continent + "' " +
+                            "ORDER BY city.Population DESC";
+
+            return getCapitalCities(sql);
+    }
+
+
+    /**
+     * Gets all capital cities in a specified region,
+     * ordered by population from largest to smallest.
+     *
+     * @param region The region to search for.
+     * @return An ArrayList containing capital cities in the
+     *         specified region, or null if the data
+     *         cannot be retrieved.
+     */
+    public ArrayList<CapitalCity> getCapitalCitiesByRegion(String region) {
+        // SQL for Use Case 19:
+        // Retrieve all capital cities in a specified region,
+        // ordered from largest population to smallest.
+        String sql =
+                "SELECT city.Name, country.Name AS Country, city.Population " +
+                        "FROM city " +
+                        "JOIN country ON city.CountryCode = country.Code " +
+                        "WHERE country.Capital = city.ID " +
+                        "AND country.Region = '" + region + "' " +
+                        "ORDER BY city.Population DESC";
+
+        return getCapitalCities(sql);
+    }
+
+    /**
+     * Gets the top N populated capital cities in the world,
+     * ordered by population from largest to smallest.
+     *
+     * @param n The number of capital cities to retrieve.
+     * @return An ArrayList containing the top N populated
+     *         capital cities, or null if the data
+     *         cannot be retrieved.
+     */
+    public ArrayList<CapitalCity> getTopNCapitalCities(int n)
+    {
+        // Check that N is a positive number.
+        if (n <= 0)
+        {
+            System.out.println("N must be a positive number.");
+            return null;
+        }
+
+
+            // SQL for Use Case 20:
+            // Retrieve the top N most populated capital cities
+            // in the world, ordered from largest to smallest.
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Capital = city.ID " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            return getCapitalCities(sql);
+    }
+
+    public ArrayList<City> getCitiesByContinent(String continent)
+    {
+        String sql =
+                    "SELECT city.Name, country.Name AS Country, " +
+                            "city.District, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Continent = '" + continent + "' " +
+                            "ORDER BY city.Population DESC";
+
+            return getCities(sql);
+    }
+
+
+    /**
+     * Use Case 21:
+     * Gets the top N populated capital cities in a continent,
+     * ordered from largest population to smallest.
+     */
+    public ArrayList<CapitalCity> getTopNCapitalCitiesByContinent(String continent, int n)
+    {
+        if (n <= 0)
+        {
+            System.out.println("N must be a positive number.");
+            return null;
+        }
+
+            // Retrieve the top N capital cities in the selected continent.
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Capital = city.ID " +
+                            "AND country.Continent = '" + continent + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            return getCapitalCities(sql);
+    }
+
+    /**
+     * Use Case 22:
+     * Gets the top N populated capital cities in a region,
+     * ordered from largest population to smallest.
+     */
+    public ArrayList<CapitalCity> getTopNCapitalCitiesByRegion(String region, int n)
+    {
+        if (n <= 0)
+        {
+            System.out.println("N must be a positive number.");
+            return null;
+        }
+
+            // Retrieve the top N capital cities in the selected region.
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Capital = city.ID " +
+                            "AND country.Region = '" + region + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            return getCapitalCities(sql);
+    }
+
+
+
+    /*
+     -------------------------------
+     All Display Functions are Below
+     -------------------------------
+     */
 
     /**
      * Displays a report of countries including their code, name,
@@ -553,657 +1227,6 @@ public class App {
     }
 
     /**
-     * Gets all countries in a specified continent from the database,
-     * ordered by population from largest to smallest.
-     *
-     * @param continent The continent to search for.
-     * @return An ArrayList containing all countries in the specified continent,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<Country> getCountriesByContinent(String continent)
-    {
-        try
-        {
-            // SQL for Use Case 2:
-            // Retrieve all countries in a specified continent,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT country.Code, country.Name, country.Continent, " +
-                            "country.Region, country.Population, city.Name AS Capital " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Capital = city.ID " +
-                            "WHERE country.Continent = ? " +
-                            "ORDER BY country.Population DESC";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? in the SQL query with the continent
-            // passed into the method.
-            stmt.setString(1, continent);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the countries.
-            ArrayList<Country> countries = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a Country object for the current row.
-                Country country = new Country();
-
-                // Store the database values in the Country object.
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-
-                // Add the country to the list.
-                countries.add(country);
-            }
-
-            // Return the completed list.
-            return countries;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the country information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get countries by continent.");
-
-            return null;
-        }
-    }
-
-
-    /**
-     * Displays a report of countries in a specified continent.
-     *
-     * @param countries List of countries to be displayed.
-     */
-    public void displayCountriesByContinent(ArrayList<Country> countries)
-    {
-        // Check if the list is null.
-        if (countries == null)
-        {
-            System.out.println("No country information available.");
-            return;
-        }
-
-        // Check if the list contains no countries.
-        if (countries.isEmpty())
-        {
-            System.out.println("No countries found in this continent.");
-            return;
-        }
-
-        // Display the column headings for the country report.
-        System.out.printf(
-                "%-5s %-35s %-20s %-30s %-15s %-30s%n",
-                "Code",
-                "Name",
-                "Continent",
-                "Region",
-                "Population",
-                "Capital"
-        );
-
-        // Display each country in the continent.
-        for (Country country : countries)
-        {
-            System.out.printf(
-                    "%-5s %-35s %-20s %-30s %-15d %-30s%n",
-                    country.code,
-                    country.name,
-                    country.continent,
-                    country.region,
-                    country.population,
-                    country.capital
-            );
-        }
-    }
-
-    /**
-     * Gets all countries in a specified region from the database,
-     * ordered by population from largest to smallest.
-     *
-     * @param region The region to search for.
-     * @return An ArrayList containing all countries in the specified region,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<Country> getCountriesByRegion(String region)
-    {
-        try
-        {
-            // SQL for Use Case 3:
-            // Retrieve all countries in a specified region,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT country.Code, country.Name, country.Continent, " +
-                            "country.Region, country.Population, city.Name AS Capital " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Capital = city.ID " +
-                            "WHERE country.Region = ? " +
-                            "ORDER BY country.Population DESC";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? in the query with the region
-            // passed into the method.
-            stmt.setString(1, region);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the countries.
-            ArrayList<Country> countries = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a Country object for the current row.
-                Country country = new Country();
-
-                // Store the database values in the Country object.
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-
-                // Add the country to the list.
-                countries.add(country);
-            }
-
-            // Return the completed list.
-            return countries;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the country information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get countries by region.");
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of countries in a specified region.
-     *
-     * @param countries List of countries to be displayed.
-     */
-    public void displayCountriesByRegion(ArrayList<Country> countries)
-    {
-        // Check if the list is null.
-        if (countries == null)
-        {
-            System.out.println("No country information available.");
-            return;
-        }
-
-        // Check if the list contains no countries.
-        if (countries.isEmpty())
-        {
-            System.out.println("No countries found in this region.");
-            return;
-        }
-
-        // Display the column headings for the country report.
-        System.out.printf(
-                "%-5s %-35s %-20s %-30s %-15s %-30s%n",
-                "Code",
-                "Name",
-                "Continent",
-                "Region",
-                "Population",
-                "Capital"
-        );
-
-        // Display each country in the region.
-        for (Country country : countries)
-        {
-            System.out.printf(
-                    "%-5s %-35s %-20s %-30s %-15d %-30s%n",
-                    country.code,
-                    country.name,
-                    country.continent,
-                    country.region,
-                    country.population,
-                    country.capital
-            );
-        }
-    }
-
-    /**
-     * Gets the top N populated countries in the world,
-     * ordered by population from largest to smallest.
-     *
-     * @param n The number of countries to retrieve.
-     * @return An ArrayList containing the top N populated countries,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<Country> getTopNCountries(int n)
-    {
-        try
-        {
-            // SQL for Use Case 4:
-            // Retrieve the top N populated countries in the world,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT country.Code, country.Name, country.Continent, " +
-                            "country.Region, country.Population, city.Name AS Capital " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Capital = city.ID " +
-                            "ORDER BY country.Population DESC " +
-                            "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the number of countries
-            // requested by the user.
-            stmt.setInt(1, n);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the countries.
-            ArrayList<Country> countries = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a Country object for the current row.
-                Country country = new Country();
-
-                // Store the database values in the Country object.
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-
-                // Add the country to the list.
-                countries.add(country);
-            }
-
-            // Return the completed list.
-            return countries;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the country information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N countries.");
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of the top N populated countries
-     * in the world.
-     *
-     * @param countries List of countries to be displayed.
-     */
-    public void displayTopNCountries(ArrayList<Country> countries)
-    {
-        // Check if the list is null.
-        if (countries == null)
-        {
-            System.out.println("No country information available.");
-            return;
-        }
-
-        // Check if the list contains no countries.
-        if (countries.isEmpty())
-        {
-            System.out.println("No countries found.");
-            return;
-        }
-
-        // Display the column headings for the country report.
-        System.out.printf(
-                "%-5s %-35s %-20s %-30s %-15s %-30s%n",
-                "Code",
-                "Name",
-                "Continent",
-                "Region",
-                "Population",
-                "Capital"
-        );
-
-        // Display each country in the report.
-        for (Country country : countries)
-        {
-            System.out.printf(
-                    "%-5s %-35s %-20s %-30s %-15d %-30s%n",
-                    country.code,
-                    country.name,
-                    country.continent,
-                    country.region,
-                    country.population,
-                    country.capital
-            );
-        }
-    }
-
-    /**
-     * Gets the top N populated countries in a specified continent,
-     * ordered by population from largest to smallest.
-     *
-     * @param continent The continent to search for.
-     * @param n The number of countries to retrieve.
-     * @return An ArrayList containing the top N populated countries
-     *         in the specified continent, or null if the data
-     *         cannot be retrieved.
-     */
-    public ArrayList<Country> getTopNCountriesByContinent(String continent, int n)
-    {
-        try
-        {
-            // SQL for Use Case 5:
-            // Retrieve the top N populated countries in a specified continent,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT country.Code, country.Name, country.Continent, " +
-                            "country.Region, country.Population, city.Name AS Capital " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Capital = city.ID " +
-                            "WHERE country.Continent = ? " +
-                            "ORDER BY country.Population DESC " +
-                            "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the first ? with the continent.
-            stmt.setString(1, continent);
-
-            // Replace the second ? with the number of countries required.
-            stmt.setInt(2, n);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the countries.
-            ArrayList<Country> countries = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a Country object for the current row.
-                Country country = new Country();
-
-                // Store the database values in the Country object.
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-
-                // Add the country to the list.
-                countries.add(country);
-            }
-
-            // Return the completed list.
-            return countries;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the country information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println(
-                    "Failed to get top N countries by continent."
-            );
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of the top N populated countries
-     * in a specified continent.
-     *
-     * @param countries List of countries to be displayed.
-     */
-    public void displayTopNCountriesByContinent(ArrayList<Country> countries)
-    {
-        // Check if the list is null.
-        if (countries == null)
-        {
-            System.out.println("No country information available.");
-            return;
-        }
-
-        // Check if the list contains no countries.
-        if (countries.isEmpty())
-        {
-            System.out.println("No countries found in this continent.");
-            return;
-        }
-
-        // Display the column headings for the country report.
-        System.out.printf(
-                "%-5s %-35s %-20s %-30s %-15s %-30s%n",
-                "Code",
-                "Name",
-                "Continent",
-                "Region",
-                "Population",
-                "Capital"
-        );
-
-        // Display each country in the report.
-        for (Country country : countries)
-        {
-            System.out.printf(
-                    "%-5s %-35s %-20s %-30s %-15d %-30s%n",
-                    country.code,
-                    country.name,
-                    country.continent,
-                    country.region,
-                    country.population,
-                    country.capital
-            );
-        }
-    }
-
-    /**
-     * Gets the top N populated countries in a specified region,
-     * ordered by population from largest to smallest.
-     *
-     * @param region The region to search for.
-     * @param n The number of countries to retrieve.
-     * @return An ArrayList containing the top N populated countries
-     *         in the specified region, or null if the data
-     *         cannot be retrieved.
-     */
-    public ArrayList<Country> getTopNCountriesByRegion(String region, int n)
-    {
-        try
-        {
-            // SQL for Use Case 6:
-            // Retrieve the top N populated countries in a specified region,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT country.Code, country.Name, country.Continent, " +
-                            "country.Region, country.Population, city.Name AS Capital " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Capital = city.ID " +
-                            "WHERE country.Region = ? " +
-                            "ORDER BY country.Population DESC " +
-                            "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the first ? with the region.
-            stmt.setString(1, region);
-
-            // Replace the second ? with the number of countries required.
-            stmt.setInt(2, n);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the countries.
-            ArrayList<Country> countries = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a Country object for the current row.
-                Country country = new Country();
-
-                // Store the database values in the Country object.
-                country.code = rset.getString("Code");
-                country.name = rset.getString("Name");
-                country.continent = rset.getString("Continent");
-                country.region = rset.getString("Region");
-                country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
-
-                // Add the country to the list.
-                countries.add(country);
-            }
-
-            // Return the completed list.
-            return countries;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the country information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println(
-                    "Failed to get top N countries by region."
-            );
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of the top N populated countries
-     * in a specified region.
-     *
-     * @param countries List of countries to be displayed.
-     */
-    public void displayTopNCountriesByRegion(ArrayList<Country> countries)
-    {
-        // Check if the list is null.
-        if (countries == null)
-        {
-            System.out.println("No country information available.");
-            return;
-        }
-
-        // Check if the list contains no countries.
-        if (countries.isEmpty())
-        {
-            System.out.println("No countries found in this region.");
-            return;
-        }
-
-        // Display the column headings for the country report.
-        System.out.printf(
-                "%-5s %-35s %-20s %-30s %-15s %-30s%n",
-                "Code",
-                "Name",
-                "Continent",
-                "Region",
-                "Population",
-                "Capital"
-        );
-
-        // Display each country in the report.
-        for (Country country : countries)
-        {
-            System.out.printf(
-                    "%-5s %-35s %-20s %-30s %-15d %-30s%n",
-                    country.code,
-                    country.name,
-                    country.continent,
-                    country.region,
-                    country.population,
-                    country.capital
-            );
-        }
-    }
-
-    /**
-     * Gets all cities in the world from the database
-     * ordered by population from largest to smallest.
-     *
-     * @return An ArrayList containing all cities,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<City> getCities()
-    {
-        try
-        {
-            // SQL for Use Case 7:
-            // Retrieve all cities,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name as 'Country', city.District, city.Population " +
-                            "FROM city " +
-                            "LEFT JOIN country ON city.CountryCode = country.Code " +
-                            "ORDER BY city.Population DESC";
-
-            // Create a statement to execute the SQL query.
-            Statement stmt = con.createStatement();
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery(sql);
-
-            // Create a list to store all cities retrieved from the database.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a new City object for the current row.
-                City city = new City();
-
-                // Store the database values in the City object.
-                city.name = rset.getString("Name");
-                city.country = rset.getString("Country");
-                city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list of cities.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get city details.");
-
-            return null;
-        }
-    }
-
-    /**
      * Displays a report of cities including their name, country, district and population.
      *
      * @param cities List of cities to be displayed.
@@ -1247,794 +1270,6 @@ public class App {
     }
 
     /**
-     * Gets all cities in a region from the database
-     * ordered by population from largest to smallest
-     *
-     * @param region The region to search for
-     * @return An ArrayList containing all cities in a region,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<City> getCitesInRegion(String region)
-    {
-        try {
-            // SQL for Use Case 9:
-            // Retrieve all cities from a region
-            // Ordered from largest population to smallest
-            String sql =
-                    "SELECT city.Name, country.Name AS 'Country', city.Population "
-                            + "FROM city "
-                            + "JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Region = ? "
-                            + "ORDER BY city.population DESC";
-
-            // Create a statement to execute the SQL query
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the region.
-            stmt.setString(1, region);
-
-            // Execute the query and store the returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            //Create a list to store all the cities retrieved from the database
-            ArrayList<City> citiesInRegion = new ArrayList<>();
-
-            // Process each row returned by the database
-            while (rset.next())
-            {
-                // Create a new City object for the current row
-                City city = new City();
-
-                // Store the database values in the City object
-                city.name = rset.getString("Name");
-                city.country = rset.getString("Country");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list
-                citiesInRegion.add(city);
-            }
-
-            // Returns completed list
-            return citiesInRegion;
-        }
-        catch (Exception e) {
-
-            // Display an error if the city information cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get cities in a region details.");
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of cities including their name, country, and population.
-     *
-     * @param citiesInRegion List of cities to be displayed.
-     */
-    public void displayCitiesInRegion(ArrayList<City> citiesInRegion)
-    {
-        // Check if the list is null.
-        if (citiesInRegion == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (citiesInRegion.isEmpty())
-        {
-            System.out.println("No cities found.");
-            return;
-        }
-
-        // Display the column headings for the cities by region report.
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name",
-                "Country",
-                "Population"
-        );
-
-        // Display each city in the report.
-        for (City city : citiesInRegion)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    city.name,
-                    city.country,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets all cities in a country from the database
-     * ordered by population from largest to smallest
-     *
-     * @param country The country to search for
-     * @return An ArrayList containing all cities in a country,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<City> getCitesInCountry(String country)
-    {
-        try {
-            // SQL for Use Case 10:
-            // Retrieve all cities from a country
-            // Ordered from largest population to smallest
-            String sql =
-                    "SELECT city.Name, city.District, city.Population "
-                    + "FROM city "
-                    + "JOIN country ON city.CountryCode = country.Code "
-                    + "WHERE country.Name = ? "
-                    + "ORDER BY city.population DESC";
-
-            // Create a statement to execute the SQL query
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the country.
-            stmt.setString(1, country);
-
-            // Execute the query and store the returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            //Create a list to store all the cities retrieved from the database
-            ArrayList<City> citiesInCountry = new ArrayList<>();
-
-            // Process each row returned by the database
-            while (rset.next())
-            {
-                // Create a new City object for the current row
-                City city = new City();
-
-                // Store the database values in the City object
-                city.name = rset.getString("Name");
-                city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list
-                citiesInCountry.add(city);
-            }
-
-            // Returns completed list
-            return citiesInCountry;
-        }
-        catch (Exception e) {
-
-            // Display an error if the city information cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get cities in a country details.");
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of cities including their name, country, and population.
-     *
-     * @param citiesInCountry List of cities to be displayed.
-     */
-    public void displayCitiesInCountry(ArrayList<City> citiesInCountry)
-    {
-        // Check if the list is null.
-        if (citiesInCountry == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (citiesInCountry.isEmpty())
-        {
-            System.out.println("No cities found.");
-            return;
-        }
-
-        // Display the column headings for the cities in country report.
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name",
-                "District",
-                "Population"
-        );
-
-        // Display each City in the report.
-        for (City city : citiesInCountry)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    city.name,
-                    city.district,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets all cities in a district from the database
-     * ordered by population from largest to smallest
-     *
-     * @param district The district to search for
-     * @return An ArrayList containing all cities in a district,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<City> getCitesInDistrict(String district)
-    {
-        try {
-            // SQL for Use Case 11:
-            // Retrieve all cities from a district
-            // Ordered from largest population to smallest
-            String sql =
-                    "SELECT city.Name, country.Name AS 'Country', city.Population "
-                            + "FROM city "
-                            + "JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE city.district = ? "
-                            + "ORDER BY city.population DESC";
-
-            // Create a statement to execute the SQL query
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the district.
-            stmt.setString(1, district);
-
-            // Execute the query and store the returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            //Create a list to store all the cities retrieved from the database
-            ArrayList<City> citiesInDistrict = new ArrayList<>();
-
-            // Process each row returned by the database
-            while (rset.next())
-            {
-                // Create a new City object for the current row
-                City city = new City();
-
-                // Store the database values in the City object
-                city.name = rset.getString("Name");
-                city.country = rset.getString("Country");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list
-                citiesInDistrict.add(city);
-            }
-
-            // Returns completed list
-            return citiesInDistrict;
-        }
-        catch (Exception e) {
-
-            // Display an error if the city information cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get cities in a district details.");
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of cities including their name, country, and population.
-     *
-     * @param citiesInDistrict List of cities to be displayed.
-     */
-    public void displayCitiesInDistrict(ArrayList<City> citiesInDistrict)
-    {
-        // Check if the list is null.
-        if (citiesInDistrict == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (citiesInDistrict.isEmpty())
-        {
-            System.out.println("No cities found.");
-            return;
-        }
-
-        // Display the column headings for the cities in district report.
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name",
-                "Country",
-                "Population"
-        );
-
-        // Display each City in the report.
-        for (City city : citiesInDistrict)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    city.name,
-                    city.country,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets the top n populated cities in the world.
-     *
-     * @param n The number of cities to retrieve.
-     * @return An ArrayList containing the top n populated cities of the world, or null if information cannot be retrieved.
-     */
-    public ArrayList<City> getTopNCities(int n)
-    {
-        try
-        {
-            // SQL for Use Case 12
-            // Retrieve the top N cities in the world
-            String sql =
-                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
-                    + "FROM city "
-                    + "JOIN country ON city.CountryCode = country.Code "
-                    + "ORDER BY city.Population DESC "
-                    + "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the limit (N)
-            stmt.setInt(1, n);
-
-            // Execute the query and store returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the cities.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                //Create a City object for the current row.
-                City city = new City();
-
-                // Store the database values in the City object.
-                city.name = rset.getString("Name");
-                city.district = rset.getString("District");
-                city.country = rset.getString("Country");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information cannot be retrieved
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N cities in the world.");
-
-            return null;
-        }
-
-    }
-
-    /**
-     * Displays a report of the top N cities in the world.
-     *
-     * @param cities List of cities to be displayed.
-     */
-    public void displayTopNCities(ArrayList<City> cities)
-    {
-        // Check if the list is null.
-        if (cities == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (cities.isEmpty())
-        {
-            System.out.println("No cities found.");
-            return;
-        }
-
-        // Display the column headings for the city report
-        System.out.printf(
-                "%-35s %-30s %-35s %-15s%n",
-                "Name",
-                "District",
-                "Country",
-                "Population"
-        );
-
-        //Display each city in the report.
-        for (City city : cities)
-        {
-            System.out.printf(
-                    "%-35s %-30s %-35s %-15d%n",
-                    city.name,
-                    city.district,
-                    city.country,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets the top n populated cities in a continent.
-     *
-     * @param continent The continent to search for.
-     * @param n The number of cities to retrieve.
-     * @return An ArrayList containing the top n populated cities of a specified continent, or null if information cannot be retrieved.
-     */
-    public ArrayList<City> getTopNCitiesByContinent(String continent, int n)
-    {
-        try
-        {
-            // SQL for Use Case 13
-            // Retrieve the top N cities in a specified continent.
-            String sql =
-                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
-                            + "FROM city "
-                            + "JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.continent = ?"
-                            + "ORDER BY city.Population DESC "
-                            + "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the first ? with the continent.
-            stmt.setString(1, continent);
-
-            // Replace the second ? with the limit (N)
-            stmt.setInt(2, n);
-
-            // Execute the query and store returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the cities.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                //Create a City object for the current row.
-                City city = new City();
-
-                // Store the database values in the City object.
-                city.name = rset.getString("Name");
-                city.district = rset.getString("District");
-                city.country = rset.getString("Country");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information cannot be retrieved
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N cities in a continent.");
-
-            return null;
-        }
-
-    }
-
-    /**
-     * Displays a report of the top N cities in a specified continent.
-     *
-     * @param cities List of cities to be displayed.
-     */
-    public void displayTopNCitiesByContinent(ArrayList<City> cities)
-    {
-        // Check if the list is null.
-        if (cities == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (cities.isEmpty())
-        {
-            System.out.println("No cities found in this continent.");
-            return;
-        }
-
-        // Display the column headings for the city report
-        System.out.printf(
-                "%-35s %-30s %-35s %-15s%n",
-                "Name",
-                "District",
-                "Country",
-                "Population"
-        );
-
-        //Display each city in the report.
-        for (City city : cities)
-        {
-            System.out.printf(
-                    "%-35s %-30s %-35s %-15d%n",
-                    city.name,
-                    city.district,
-                    city.country,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets the top n populated cities in a region.
-     *
-     * @param region The region to search for.
-     * @param n The number of cities to retrieve.
-     * @return An ArrayList containing the top n populated cities of a specified region, or null if information cannot be retrieved.
-     */
-    public ArrayList<City> getTopNCitiesByRegion(String region, int n)
-    {
-        try
-        {
-            // SQL for Use Case 14
-            // Retrieve the top N cities in a specified region.
-            String sql =
-                    "SELECT city.Name, city.District, country.Name AS 'Country', city.Population "
-                            + "FROM city "
-                            + "JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.region = ?"
-                            + "ORDER BY city.Population DESC "
-                            + "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the first ? with the region.
-            stmt.setString(1, region);
-
-            // Replace the second ? with the limit (N)
-            stmt.setInt(2, n);
-
-            // Execute the query and store returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the cities.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                //Create a City object for the current row.
-                City city = new City();
-
-                // Store the database values in the City object.
-                city.name = rset.getString("Name");
-                city.district = rset.getString("District");
-                city.country = rset.getString("Country");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information cannot be retrieved
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N cities in a region.");
-
-            return null;
-        }
-
-    }
-
-    /**
-     * Displays a report of the top N cities in a specified region.
-     *
-     * @param cities List of cities to be displayed.
-     */
-    public void displayTopNCitiesByRegion(ArrayList<City> cities)
-    {
-        // Check if the list is null.
-        if (cities == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (cities.isEmpty())
-        {
-            System.out.println("No cities found in this region.");
-            return;
-        }
-
-        // Display the column headings for the city report
-        System.out.printf(
-                "%-35s %-30s %-35s %-15s%n",
-                "Name",
-                "District",
-                "Country",
-                "Population"
-        );
-
-        //Display each city in the report.
-        for (City city : cities)
-        {
-            System.out.printf(
-                    "%-35s %-30s %-35s %-15d%n",
-                    city.name,
-                    city.district,
-                    city.country,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets the top n populated cities in a country.
-     *
-     * @param country The country to search for.
-     * @param n The number of cities to retrieve.
-     * @return An ArrayList containing the top n populated cities of a specified country, or null if information cannot be retrieved.
-     */
-    public ArrayList<City> getTopNCitiesByCountry(String country, int n)
-    {
-        try
-        {
-            // SQL for Use Case 15
-            // Retrieve the top N cities in a specified country.
-            String sql =
-                    "SELECT city.Name, city.District, city.Population "
-                            + "FROM city "
-                            + "JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Name = ?"
-                            + "ORDER BY city.Population DESC "
-                            + "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the first ? with the country.
-            stmt.setString(1, country);
-
-            // Replace the second ? with the limit (N)
-            stmt.setInt(2, n);
-
-            // Execute the query and store returned rows
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the cities.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                //Create a City object for the current row.
-                City city = new City();
-
-                // Store the database values in the City object.
-                city.name = rset.getString("Name");
-                city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information cannot be retrieved
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N cities in a country.");
-
-            return null;
-        }
-
-    }
-
-    /**
-     * Displays a report of the top N cities in a specified country.
-     *
-     * @param cities List of cities to be displayed.
-     */
-    public void displayTopNCitiesByCountry(ArrayList<City> cities)
-    {
-        // Check if the list is null.
-        if (cities == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (cities.isEmpty())
-        {
-            System.out.println("No cities found in this country.");
-            return;
-        }
-
-        // Display the column headings for the city report
-        System.out.printf(
-                "%-35s %-30s %-15s%n",
-                "Name",
-                "District",
-                "Population"
-        );
-
-        //Display each city in the report.
-        for (City city : cities)
-        {
-            System.out.printf(
-                    "%-35s %-30s %-15d%n",
-                    city.name,
-                    city.district,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Gets all capital cities in the world from the database
-     * ordered by population from largest to smallest.
-     *
-     * @return An ArrayList containing all capital cities,
-     *         or null if the data cannot be retrieved.
-     */
-    public ArrayList<CapitalCity> getCapitalCities()
-    {
-        try
-        {
-            // SQL for Use Case 17:
-            // Retrieve all capital cities,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name as 'Country', city.Population " +
-                            "FROM city " +
-                            "LEFT JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Capital = city.Id " +
-                            "ORDER BY city.Population DESC";
-
-            // Create a statement to execute the SQL query.
-            Statement stmt = con.createStatement();
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery(sql);
-
-            // Create a list to store all capital cities retrieved from the database.
-            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a new CapitalCity object for the current row.
-                CapitalCity capitalCity = new CapitalCity();
-
-                // Store the database values in the CapitalCity object.
-                capitalCity.name = rset.getString("Name");
-                capitalCity.country = rset.getString("Country");
-                capitalCity.population = rset.getInt("Population");
-
-                // Add the capital city to the list.
-                capitalCities.add(capitalCity);
-            }
-
-            // Return the completed list of city.
-            return capitalCities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get capital city details.");
-
-            return null;
-        }
-    }
-    /**
      * Displays a report of cities including their name, country, district and population.
      *
      * @param capitalCities List of capital cities to be displayed.
@@ -2074,763 +1309,16 @@ public class App {
             );
         }
     }
-    /**
-     * Gets the top N populated cities in a specified district,
-     * ordered by population from largest to smallest.
-     *
-     * @param district The district to search for.
-     * @param n The number of cities to retrieve.
-     * @return An ArrayList containing the top N populated cities
-     *         in the specified district, or null if the data
-     *         cannot be retrieved.
-     */
-    public ArrayList<City> getTopNCitiesByDistrict(String district, int n)
-    {
-        try
-        {
-            // SQL for Use Case 16:
-            // Retrieve the top N populated cities in a specified district,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, " +
-                            "city.District, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE city.District = ? " +
-                            "ORDER BY city.Population DESC " +
-                            "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the first ? with the district.
-            stmt.setString(1, district);
-
-            // Replace the second ? with the number of cities required.
-            stmt.setInt(2, n);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the cities.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a City object for the current row.
-                City city = new City();
-
-                // Store the database values in the City object.
-                city.name = rset.getString("Name");
-                city.country = rset.getString("Country");
-                city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the city information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println(
-                    "Failed to get top N cities by district."
-            );
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of the top N populated cities
-     * in a specified district.
-     *
-     * @param cities List of cities to be displayed.
-     */
-    public void displayTopNCitiesByDistrict(ArrayList<City> cities)
-    {
-        // Check if the list is null.
-        if (cities == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list contains no cities.
-        if (cities.isEmpty())
-        {
-            System.out.println("No cities found in this district.");
-            return;
-        }
-
-        // Display the column headings for the city report.
-        System.out.printf(
-                "%-35s %-35s %-30s %-15s%n",
-                "Name",
-                "Country",
-                "District",
-                "Population"
-        );
-
-        // Display each city in the report.
-        for (City city : cities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-30s %-15d%n",
-                    city.name,
-                    city.country,
-                    city.district,
-                    city.population
-            );
-        }
-    }
 
 
     /**
-     * Gets all capital cities in a specified continent,
-     * ordered by population from largest to smallest.
-     *
-     * @param continent The continent to search for.
-     * @return An ArrayList containing capital cities in the
-     *         specified continent, or null if the data
-     *         cannot be retrieved.
-     */
-    public ArrayList<CapitalCity> getCapitalCitiesByContinent(String continent)
-    {
-        try
-        {
-            // SQL for Use Case 18:
-            // Retrieve all capital cities in a specified continent,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Capital = city.ID " +
-                            "AND country.Continent = ? " +
-                            "ORDER BY city.Population DESC";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the continent.
-            stmt.setString(1, continent);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the capital cities.
-            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a CapitalCity object for the current row.
-                CapitalCity capitalCity = new CapitalCity();
-
-                // Store the database values in the CapitalCity object.
-                capitalCity.name = rset.getString("Name");
-                capitalCity.country = rset.getString("Country");
-                capitalCity.population = rset.getInt("Population");
-
-                // Add the capital city to the list.
-                capitalCities.add(capitalCity);
-            }
-
-            // Return the completed list.
-            return capitalCities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the capital city information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println(
-                    "Failed to get capital cities by continent."
-            );
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of capital cities in a specified
-     * continent, including name, country and population.
-     *
-     * @param capitalCities List of capital cities to be displayed.
-     */
-    public void displayCapitalCitiesByContinent(ArrayList<CapitalCity> capitalCities)
-    {
-        // Check if the list is null.
-        if (capitalCities == null)
-        {
-            System.out.println("No capital city information available.");
-            return;
-        }
-
-        // Check if the list contains no capital cities.
-        if (capitalCities.isEmpty())
-        {
-            System.out.println("No capital cities found in this continent.");
-            return;
-        }
-
-        // Display the column headings for the capital city report.
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name",
-                "Country",
-                "Population"
-        );
-
-        // Display each capital city in the continent.
-        for (CapitalCity capitalCity : capitalCities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    capitalCity.name,
-                    capitalCity.country,
-                    capitalCity.population
-            );
-        }
-    }
-
-    /**
-     * Gets all capital cities in a specified region,
-     * ordered by population from largest to smallest.
-     *
-     * @param region The region to search for.
-     * @return An ArrayList containing capital cities in the
-     *         specified region, or null if the data
-     *         cannot be retrieved.
-     */
-    public ArrayList<CapitalCity> getCapitalCitiesByRegion(String region)
-    {
-        try
-        {
-            // SQL for Use Case 19:
-            // Retrieve all capital cities in a specified region,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Capital = city.ID " +
-                            "AND country.Region = ? " +
-                            "ORDER BY city.Population DESC";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the region.
-            stmt.setString(1, region);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the capital cities.
-            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a CapitalCity object for the current row.
-                CapitalCity capitalCity = new CapitalCity();
-
-                // Store the database values in the CapitalCity object.
-                capitalCity.name = rset.getString("Name");
-                capitalCity.country = rset.getString("Country");
-                capitalCity.population = rset.getInt("Population");
-
-                // Add the capital city to the list.
-                capitalCities.add(capitalCity);
-            }
-
-            // Return the completed list.
-            return capitalCities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the capital city information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println(
-                    "Failed to get capital cities by region."
-            );
-
-            return null;
-        }
-    }
-
-
-    /**
-     * Displays a report of capital cities in a specified
-     * region, including name, country and population.
-     *
-     * @param capitalCities List of capital cities to be displayed.
-     */
-    public void displayCapitalCitiesByRegion(ArrayList<CapitalCity> capitalCities)
-    {
-        // Check if the list is null.
-        if (capitalCities == null)
-        {
-            System.out.println("No capital city information available.");
-            return;
-        }
-
-        // Check if the list contains no capital cities.
-        if (capitalCities.isEmpty())
-        {
-            System.out.println("No capital cities found in this region.");
-            return;
-        }
-
-        // Display the column headings for the capital city report.
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name",
-                "Country",
-                "Population"
-        );
-
-        // Display each capital city in the region.
-        for (CapitalCity capitalCity : capitalCities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    capitalCity.name,
-                    capitalCity.country,
-                    capitalCity.population
-            );
-        }
-    }
-
-    /**
-     * Gets the top N populated capital cities in the world,
-     * ordered by population from largest to smallest.
-     *
-     * @param n The number of capital cities to retrieve.
-     * @return An ArrayList containing the top N populated
-     *         capital cities, or null if the data
-     *         cannot be retrieved.
-     */
-    public ArrayList<CapitalCity> getTopNCapitalCities(int n)
-    {
-        // Check that N is a positive number.
-        if (n <= 0)
-        {
-            System.out.println("N must be a positive number.");
-            return null;
-        }
-
-        try
-        {
-            // SQL for Use Case 20:
-            // Retrieve the top N most populated capital cities
-            // in the world, ordered from largest to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Capital = city.ID " +
-                            "ORDER BY city.Population DESC " +
-                            "LIMIT ?";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the number of capital cities required.
-            stmt.setInt(1, n);
-
-            // Execute the query and store the returned rows.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store the capital cities.
-            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a CapitalCity object for the current row.
-                CapitalCity capitalCity = new CapitalCity();
-
-                // Store the database values in the CapitalCity object.
-                capitalCity.name = rset.getString("Name");
-                capitalCity.country = rset.getString("Country");
-                capitalCity.population = rset.getInt("Population");
-
-                // Add the capital city to the list.
-                capitalCities.add(capitalCity);
-            }
-
-            // Return the completed list.
-            return capitalCities;
-        }
-        catch (Exception e)
-        {
-            // Display an error if the capital city information
-            // cannot be retrieved.
-            System.out.println(e.getMessage());
-            System.out.println(
-                    "Failed to get top N capital cities."
-            );
-
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of the top N populated capital cities
-     * in the world, including name, country and population.
-     *
-     * @param capitalCities List of capital cities to be displayed.
-     */
-    public void displayTopNCapitalCities(ArrayList<CapitalCity> capitalCities)
-    {
-        // Check if the list is null.
-        if (capitalCities == null)
-        {
-            System.out.println("No capital city information available.");
-            return;
-        }
-
-        // Check if the list contains no capital cities.
-        if (capitalCities.isEmpty())
-        {
-            System.out.println("No capital cities found.");
-            return;
-        }
-
-        // Display the column headings for the capital city report.
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name",
-                "Country",
-                "Population"
-        );
-
-        // Display each capital city in the report.
-        for (CapitalCity capitalCity : capitalCities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    capitalCity.name,
-                    capitalCity.country,
-                    capitalCity.population
-            );
-        }
-    }
-    public ArrayList<City> getCitiesByContinent(String continent)
-    {
-        try
-        {
-            // SQL for Use Case 8:
-            // Retrieve all cities in a specified continent,
-            // ordered from largest population to smallest.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, " +
-                            "city.District, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Continent = ? " +
-                            "ORDER BY city.Population DESC";
-
-            // Create a prepared statement for the SQL query.
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Replace the ? with the specified continent.
-            stmt.setString(1, continent);
-
-            // Execute the SQL query.
-            ResultSet rset = stmt.executeQuery();
-
-            // Create a list to store cities.
-            ArrayList<City> cities = new ArrayList<>();
-
-            // Process each row returned by the database.
-            while (rset.next())
-            {
-                // Create a new City object.
-                City city = new City();
-
-                // Store the database values.
-                city.name = rset.getString("Name");
-                city.country = rset.getString("Country");
-                city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-
-                // Add the city to the list.
-                cities.add(city);
-            }
-
-            // Return the completed list.
-            return cities;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get cities by continent.");
-            return null;
-        }
-    }
-
-    /**
-     * Displays a report of cities in a specified continent.
-     *
-     * @param cities List of cities to be displayed.
-     */
-    public void displayCitiesByContinent(ArrayList<City> cities)
-    {
-        // Check if the list is null.
-        if (cities == null)
-        {
-            System.out.println("No city information available.");
-            return;
-        }
-
-        // Check if the list is empty.
-        if (cities.isEmpty())
-        {
-            System.out.println("No cities found in this continent.");
-            return;
-        }
-
-        // Display the column headings.
-        System.out.printf(
-                "%-35s %-35s %-20s %-15s%n",
-                "Name",
-                "Country",
-                "District",
-                "Population"
-        );
-
-        // Display each city.
-        for (City city : cities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-20s %-15d%n",
-                    city.name,
-                    city.country,
-                    city.district,
-                    city.population
-            );
-        }
-    }
-
-    /**
-     * Use Case 21:
-     * Gets the top N populated capital cities in a continent,
-     * ordered from largest population to smallest.
-     */
-    public ArrayList<CapitalCity> getTopNCapitalCitiesByContinent(String continent, int n)
-    {
-        if (n <= 0)
-        {
-            System.out.println("N must be a positive number.");
-            return null;
-        }
-
-        try
-        {
-            // Retrieve the top N capital cities in the selected continent.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Capital = city.ID " +
-                            "AND country.Continent = ? " +
-                            "ORDER BY city.Population DESC " +
-                            "LIMIT ?";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Set the continent and the number of capital cities.
-            stmt.setString(1, continent);
-            stmt.setInt(2, n);
-
-            ResultSet rset = stmt.executeQuery();
-
-            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-            while (rset.next())
-            {
-                CapitalCity capitalCity = new CapitalCity();
-
-                capitalCity.name = rset.getString("Name");
-                capitalCity.country = rset.getString("Country");
-                capitalCity.population = rset.getInt("Population");
-
-                capitalCities.add(capitalCity);
-            }
-
-            rset.close();
-            stmt.close();
-
-            return capitalCities;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N capital cities by continent.");
-            return null;
-        }
-    }
-
-    /**
-     * Displays the top N capital cities in a continent.
-     */
-    public void displayTopNCapitalCitiesByContinent(ArrayList<CapitalCity> capitalCities)
-    {
-        if (capitalCities == null)
-        {
-            System.out.println("No capital city information available.");
-            return;
-        }
-
-        if (capitalCities.isEmpty())
-        {
-            System.out.println("No capital cities found in this continent.");
-            return;
-        }
-
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name", "Country", "Population"
-        );
-
-        for (CapitalCity capitalCity : capitalCities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    capitalCity.name,
-                    capitalCity.country,
-                    capitalCity.population
-            );
-        }
-    }
-
-
-    /**
-     * Use Case 22:
-     * Gets the top N populated capital cities in a region,
-     * ordered from largest population to smallest.
-     */
-    public ArrayList<CapitalCity> getTopNCapitalCitiesByRegion(String region, int n)
-    {
-        if (n <= 0)
-        {
-            System.out.println("N must be a positive number.");
-            return null;
-        }
-
-        try
-        {
-            // Retrieve the top N capital cities in the selected region.
-            String sql =
-                    "SELECT city.Name, country.Name AS Country, city.Population " +
-                            "FROM city " +
-                            "JOIN country ON city.CountryCode = country.Code " +
-                            "WHERE country.Capital = city.ID " +
-                            "AND country.Region = ? " +
-                            "ORDER BY city.Population DESC " +
-                            "LIMIT ?";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // Set the region and the number of capital cities.
-            stmt.setString(1, region);
-            stmt.setInt(2, n);
-
-            ResultSet rset = stmt.executeQuery();
-
-            ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-            while (rset.next())
-            {
-                CapitalCity capitalCity = new CapitalCity();
-
-                capitalCity.name = rset.getString("Name");
-                capitalCity.country = rset.getString("Country");
-                capitalCity.population = rset.getInt("Population");
-
-                capitalCities.add(capitalCity);
-            }
-
-            rset.close();
-            stmt.close();
-
-            return capitalCities;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top N capital cities by region.");
-            return null;
-        }
-    }
-
-    /**
-     * Displays the top N capital cities in a region.
-     */
-    public void displayTopNCapitalCitiesByRegion(ArrayList<CapitalCity> capitalCities)
-    {
-        if (capitalCities == null)
-        {
-            System.out.println("No capital city information available.");
-            return;
-        }
-
-        if (capitalCities.isEmpty())
-        {
-            System.out.println("No capital cities found in this region.");
-            return;
-        }
-
-        System.out.printf(
-                "%-35s %-35s %-15s%n",
-                "Name", "Country", "Population"
-        );
-
-        for (CapitalCity capitalCity : capitalCities)
-        {
-            System.out.printf(
-                    "%-35s %-35s %-15d%n",
-                    capitalCity.name,
-                    capitalCity.country,
-                    capitalCity.population
-            );
-        }
-    }
-
-    /**
-     * Use Case 23:
      * Displays the total population, city population,
-     * and non-city population for each continent.
+     * and non-city population.
      */
-    public void displayPopulationByContinent()
+    public void displayPopulation(String sql)
     {
         try
         {
-            // Calculate city population for each country first.
-            // Then combine countries by continent.
-            String sql =
-                    "SELECT country.Continent AS Name, " +
-                            "SUM(country.Population) AS TotalPopulation, " +
-                            "SUM(COALESCE(city_pop.CityPopulation, 0)) AS CityPopulation " +
-                            "FROM country " +
-                            "LEFT JOIN ( " +
-                            "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
-                            "    FROM city " +
-                            "    GROUP BY CountryCode " +
-                            ") city_pop ON country.Code = city_pop.CountryCode " +
-                            "GROUP BY country.Continent " +
-                            "ORDER BY country.Continent";
 
             try (Statement stmt = con.createStatement();
                  ResultSet rset = stmt.executeQuery(sql))
@@ -2869,148 +1357,6 @@ public class App {
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to display population by continent.");
-        }
-    }
-
-    /**
-     * Use Case 24:
-     * Displays the total population, city population,
-     * and non-city population for each region.
-     */
-    public void displayPopulationByRegion()
-    {
-        try
-        {
-            // Calculate city population for each country first.
-            // Then combine countries by region.
-            String sql =
-                    "SELECT country.Region AS Name, " +
-                            "SUM(country.Population) AS TotalPopulation, " +
-                            "SUM(COALESCE(city_pop.CityPopulation, 0)) AS CityPopulation " +
-                            "FROM country " +
-                            "LEFT JOIN ( " +
-                            "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
-                            "    FROM city " +
-                            "    GROUP BY CountryCode " +
-                            ") city_pop ON country.Code = city_pop.CountryCode " +
-                            "GROUP BY country.Region " +
-                            "ORDER BY country.Region";
-
-            try (Statement stmt = con.createStatement();
-                 ResultSet rset = stmt.executeQuery(sql))
-            {
-                System.out.printf(
-                        "%-35s %-18s %-18s %-18s %-12s %-12s%n",
-                        "Region", "Total Population", "City Population",
-                        "Non-City Population", "City %", "Non-City %"
-                );
-
-                while (rset.next())
-                {
-                    String name = rset.getString("Name");
-                    long total = rset.getLong("TotalPopulation");
-                    long city = rset.getLong("CityPopulation");
-                    long nonCity = total - city;
-
-                    double cityPercent = 0;
-                    double nonCityPercent = 0;
-
-                    if (total > 0)
-                    {
-                        cityPercent = city * 100.0 / total;
-                        nonCityPercent = nonCity * 100.0 / total;
-                    }
-
-                    System.out.printf(
-                            "%-35s %-18d %-18d %-18d %-12.2f %-12.2f%n",
-                            name, total, city, nonCity,
-                            cityPercent, nonCityPercent
-                    );
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to display population by region.");
-        }
-    }
-
-
-    /**
-     * Use Case 25:
-     * Displays the total population, city population,
-     * and non-city population for each country.
-     */
-    public void displayPopulationByCountry()
-    {
-        try
-        {
-            // Get the total population and the population
-            // living in listed cities for each country.
-            String sql =
-                    "SELECT country.Name AS Name, " +
-                            "country.Population AS TotalPopulation, " +
-                            "COALESCE(city_pop.CityPopulation, 0) AS CityPopulation " +
-                            "FROM country " +
-                            "LEFT JOIN ( " +
-                            "    SELECT CountryCode, SUM(Population) AS CityPopulation " +
-                            "    FROM city " +
-                            "    GROUP BY CountryCode " +
-                            ") city_pop ON country.Code = city_pop.CountryCode " +
-                            "ORDER BY country.Name";
-
-            try (Statement stmt = con.createStatement();
-                 ResultSet rset = stmt.executeQuery(sql))
-            {
-                // Display report headings.
-                System.out.printf(
-                        "%-40s %-18s %-18s %-18s %-12s %-12s%n",
-                        "Country",
-                        "Total Population",
-                        "City Population",
-                        "Non-City Population",
-                        "City %",
-                        "Non-City %"
-                );
-
-                // Display each country's population.
-                while (rset.next())
-                {
-                    String name = rset.getString("Name");
-                    long total = rset.getLong("TotalPopulation");
-                    long city = rset.getLong("CityPopulation");
-
-                    // Calculate people not living in listed cities.
-                    long nonCity = total - city;
-
-                    double cityPercent = 0;
-                    double nonCityPercent = 0;
-
-                    // Avoid dividing by zero.
-                    if (total > 0)
-                    {
-                        cityPercent = city * 100.0 / total;
-                        nonCityPercent = nonCity * 100.0 / total;
-                    }
-
-                    // Print the country population report.
-                    System.out.printf(
-                            "%-40s %-18d %-18d %-18d %-12.2f %-12.2f%n",
-                            name,
-                            total,
-                            city,
-                            nonCity,
-                            cityPercent,
-                            nonCityPercent
-                    );
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to display population by country.");
         }
     }
 
