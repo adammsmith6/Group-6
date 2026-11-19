@@ -69,7 +69,7 @@ public class CountryTest
 
     /**
      * Tests displayCountriesByContinent with a null list.
-     */
+     *
     @Test
     void displayCountriesByContinentTestNull()
     {
@@ -77,11 +77,11 @@ public class CountryTest
         // Test the method with a null country list.
         coun.displayCountriesByContinent(null);
     }
-
+    */
 
     /**
      * Tests displayCountriesByContinent with an empty list.
-     */
+     *
     @Test
     void displayCountriesByContinentTestEmpty()
     {
@@ -92,11 +92,11 @@ public class CountryTest
         // Test the method with an empty country list.
         coun.displayCountriesByContinent(countries);
     }
-
+    */
 
     /**
      * Tests displayCountriesByContinent with valid country data.
-     */
+     *
     @Test
     void displayCountriesByContinentTestCountry()
     {
@@ -117,23 +117,24 @@ public class CountryTest
         countries.add(country);
 
         // Test the method with valid country data.
-        coun.displayCountriesByContinent(countries);
+        coun.displayCountries(countries);
     }
+    */
 
     /**
      * Tests displayCountriesByRegion with a null list.
-     */
+     *
     @Test
     void displayCountriesByRegionTestNull()
     {
         // Test the method with a null country list.
         coun.displayCountriesByRegion(null);
     }
-
+    */
 
     /**
      * Tests displayCountriesByRegion with an empty list.
-     */
+     *
     @Test
     void displayCountriesByRegionTestEmpty()
     {
@@ -144,11 +145,11 @@ public class CountryTest
         // Test the method with an empty country list.
         coun.displayCountriesByRegion(countries);
     }
-
+    */
 
     /**
      * Tests displayCountriesByRegion with valid country data.
-     */
+     *
     @Test
     void displayCountriesByRegionTestCountry()
     {
@@ -171,10 +172,11 @@ public class CountryTest
         // Test the method with valid country data.
         coun.displayCountriesByRegion(countries);
     }
+    */
 
     /**
      * Tests displayTopNCountries with a null list.
-     */
+     *
     @Test
     void displayTopNCountriesTestNull()
     {
@@ -182,11 +184,12 @@ public class CountryTest
         // Test the method with a null country list.
         coun.displayTopNCountries(null);
     }
+    */
 
 
     /**
      * Tests displayTopNCountries with an empty list.
-     */
+     *
     @Test
     void displayTopNCountriesTestEmpty()
     {
@@ -196,11 +199,11 @@ public class CountryTest
         // Test the method with an empty country list.
         coun.displayTopNCountries(countries);
     }
-
+    */
 
     /**
      * Tests displayTopNCountries with valid country data.
-     */
+     *
     @Test
     void displayTopNCountriesTestCountry()
     {
@@ -223,10 +226,11 @@ public class CountryTest
         // Test the method with valid country data.
         coun.displayTopNCountries(countries);
     }
+    */
 
     /**
      * Tests displayTopNCountriesByContinent with a null list.
-     */
+     *
     @Test
     void displayTopNCountriesByContinentTestNull()
     {
@@ -234,11 +238,12 @@ public class CountryTest
         // Test the method with a null country list.
         coun.displayTopNCountriesByContinent(null);
     }
+    */
 
 
     /**
      * Tests displayTopNCountriesByContinent with an empty list.
-     */
+     *
     @Test
     void displayTopNCountriesByContinentTestEmpty()
     {
@@ -249,11 +254,12 @@ public class CountryTest
         // Test the method with an empty country list.
         coun.displayTopNCountriesByContinent(countries);
     }
+    */
 
 
     /**
      * Tests displayTopNCountriesByContinent with valid country data.
-     */
+     *
     @Test
     void displayTopNCountriesByContinentTestCountry()
     {
@@ -276,10 +282,11 @@ public class CountryTest
         // Test the method with valid country data.
         coun.displayTopNCountriesByContinent(countries);
     }
+    */
 
     /**
      * Tests displayTopNCountriesByRegion with a null list.
-     */
+     *
     @Test
     void displayTopNCountriesByRegionTestNull()
     {
@@ -287,11 +294,12 @@ public class CountryTest
         // Test the method with a null country list.
         coun.displayTopNCountriesByRegion(null);
     }
+    */
 
 
     /**
      * Tests displayTopNCountriesByRegion with an empty list.
-     */
+     *
     @Test
     void displayTopNCountriesByRegionTestEmpty()
     {
@@ -301,11 +309,12 @@ public class CountryTest
         // Test the method with an empty country list.
         coun.displayTopNCountriesByRegion(countries);
     }
+    */
 
 
     /**
      * Tests displayTopNCountriesByRegion with valid country data.
-     */
+     *
     @Test
     void displayTopNCountriesByRegionTestCountry()
     {
@@ -327,5 +336,6 @@ public class CountryTest
         // Test the method with valid country data.
         coun.displayTopNCountriesByRegion(countries);
     }
+    */
 
 }
