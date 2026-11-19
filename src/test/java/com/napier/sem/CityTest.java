@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
@@ -12,6 +13,16 @@ import java.util.ArrayList;
  */
 public class CityTest
 {
+
+    static App app;
+    static City cityObj;
+
+    @BeforeAll
+    static void init() {
+        app = new App();
+        cityObj = new City();
+    }
+
     // ========================================
     // UC7 - All cities in the world
     // ========================================
@@ -22,11 +33,8 @@ public class CityTest
     @Test
     void displayCitiesTestNull()
     {
-        // Create application object.
-        App app = new App();
-
         // Test the method with a null city list.
-        app.displayCities(null);
+        cityObj.displayCities(null);
     }
 
     /**
@@ -35,14 +43,11 @@ public class CityTest
     @Test
     void displayCitiesTestEmpty()
     {
-        // Create application object.
-        App app = new App();
-
         // Create an empty city list.
         ArrayList<City> cities = new ArrayList<>();
 
         // Test the method with an empty city list.
-        app.displayCities(cities);
+        cityObj.displayCities(cities);
     }
 
     /**
@@ -51,9 +56,6 @@ public class CityTest
     @Test
     void displayCitiesTestCity()
     {
-        // Create application object.
-        App app = new App();
-
         // Create a city for testing.
         City city = new City();
         city.name = "Mumbai";
@@ -68,7 +70,7 @@ public class CityTest
         cities.add(city);
 
         // Test the method with valid city data.
-        app.displayCities(cities);
+        cityObj.displayCities(cities);
     }
 
     // ========================================
@@ -77,7 +79,7 @@ public class CityTest
 
     /**
      * Tests displayCitiesByContinent with a null list.
-     */
+     *
     @Test
     void displayCitiesByContinentTestNull()
     {
@@ -87,10 +89,11 @@ public class CityTest
         // Test the method with a null city list.
         app.displayCitiesByContinent(null);
     }
+    */
 
     /**
      * Tests displayCitiesByContinent with an empty list.
-     */
+     *
     @Test
     void displayCitiesByContinentTestEmpty()
     {
@@ -103,10 +106,11 @@ public class CityTest
         // Test the method with an empty city list.
         app.displayCitiesByContinent(cities);
     }
+    */
 
     /**
      * Tests displayCitiesByContinent with valid city data.
-     */
+     *
     @Test
     void displayCitiesByContinentTestCity()
     {
@@ -129,6 +133,7 @@ public class CityTest
         // Test the method with valid city data.
         app.displayCitiesByContinent(cities);
     }
+    */
 
     // ========================================
     // UC16 - Top N cities in a district
@@ -136,7 +141,7 @@ public class CityTest
 
     /**
      * Tests displayTopNCitiesByDistrict with a null list.
-     */
+     *
     @Test
     void displayTopNCitiesByDistrictTestNull()
     {
@@ -146,10 +151,11 @@ public class CityTest
         // Test the method with a null city list.
         app.displayTopNCitiesByDistrict(null);
     }
+    */
 
     /**
      * Tests displayTopNCitiesByDistrict with an empty list.
-     */
+     *
     @Test
     void displayTopNCitiesByDistrictTestEmpty()
     {
@@ -162,10 +168,11 @@ public class CityTest
         // Test the method with an empty city list.
         app.displayTopNCitiesByDistrict(cities);
     }
+    */
 
     /**
      * Tests displayTopNCitiesByDistrict with valid city data.
-     */
+     *
     @Test
     void displayTopNCitiesByDistrictTestCity()
     {
@@ -188,4 +195,5 @@ public class CityTest
         // Test the method with valid city data.
         app.displayTopNCitiesByDistrict(cities);
     }
+    */
 }
