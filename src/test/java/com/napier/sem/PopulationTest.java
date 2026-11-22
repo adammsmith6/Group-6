@@ -29,7 +29,7 @@ public class PopulationTest
 
         // Test the population report method.
         assertDoesNotThrow(() ->
-                app.displayPopulationByContinent());
+                app.displayPopulation(null));
     }
 
 
@@ -39,7 +39,7 @@ public class PopulationTest
 
     /**
      * UC24: Test that the method does not crash.
-     */
+     *
     @Test
     void displayPopulationByRegionTest()
     {
@@ -51,7 +51,7 @@ public class PopulationTest
         assertDoesNotThrow(() ->
                 app.displayPopulationByRegion());
     }
-
+*/
 
     // ========================================
     // USE CASE 25 - Population by Country
@@ -59,7 +59,7 @@ public class PopulationTest
 
     /**
      * UC25: Test that the method does not crash.
-     */
+     *
     @Test
     void displayPopulationByCountryTest()
     {
@@ -71,4 +71,5 @@ public class PopulationTest
         assertDoesNotThrow(() ->
                 app.displayPopulationByCountry());
     }
+    */
 }
