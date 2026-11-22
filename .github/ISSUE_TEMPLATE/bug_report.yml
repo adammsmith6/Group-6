@@ -1,0 +1,134 @@
+
+# GitHub Issue Form for reporting bugs in Group 6.
+
+name: Bug Report
+
+description: Report a bug in the World Population Reporting System.
+
+title: "[BUG] "
+
+labels: ["bug"]
+
+body:
+  # Introduction displayed at the top of the form.
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug.
+        Please provide enough information for the team
+        to reproduce and investigate the problem.
+
+  # Description of the bug.
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Explain what went wrong.
+      placeholder: Describe the problem clearly.
+    validations:
+      required: true
+
+  # Select the affected functionality.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component
+      description: Which part of the system is affected?
+      options:
+        - Country Reports
+        - City Reports
+        - Capital City Reports
+        - Population Reports
+        - Database Connection
+        - Unit Testing
+        - Integration Testing
+        - Docker
+        - CI/CD Deployment
+        - Other
+    validations:
+      required: true
+
+  # Identify the relevant use case.
+  - type: input
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Enter the affected use case, if applicable.
+      placeholder: "Example: UC5"
+    validations:
+      required: false
+
+  # Steps required to reproduce the problem.
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Explain how the bug can be reproduced.
+      placeholder: |
+        1. Start the application.
+        2. Run the affected use case.
+        3. Observe the error.
+    validations:
+      required: true
+
+  # What should happen when the system works correctly?
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: Describe the correct behaviour.
+    validations:
+      required: true
+
+  # What actually happened?
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behaviour
+      description: Describe what happened instead.
+    validations:
+      required: true
+
+  # Error logs or stack traces.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Logs
+      description: Paste any relevant Java, Maven or Docker errors.
+      render: shell
+    validations:
+      required: false
+
+  # Environment details.
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where did the bug occur?
+      options:
+        - IntelliJ IDEA
+        - Docker
+        - GitHub Actions
+        - Other
+    validations:
+      required: true
+
+  # Additional information.
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Add screenshots or other relevant details.
+    validations:
+      required: false
+
+  # Confirmation checklist.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have checked for existing reports of this issue.
+          required: true
+        - label: I have provided steps to reproduce the issue.
+          required: true
