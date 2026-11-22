@@ -1,0 +1,58 @@
+
+# GitHub Issue Form for proposing project improvements.
+
+name: Feature Request
+
+description: Suggest a new feature or improvement.
+
+title: "[FEATURE] "
+
+labels: ["enhancement"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to suggest improvements
+        to the Group 6 Population Reporting System.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: What feature would you like to add?
+      placeholder: Describe your proposed feature.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Related Component
+      options:
+        - Country Reports
+        - City Reports
+        - Capital City Reports
+        - Population Reports
+        - Database
+        - Testing
+        - Deployment
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Expected Benefits
+      description: How will this improve the project?
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Add any additional context.
+    validations:
+      required: false
