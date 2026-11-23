@@ -1,6 +1,6 @@
 FROM mysql/mysql-server:latest
 
-WORKDIR /tmp
+
 
 COPY world.sql /docker-entrypoint-initdb.d/
 
