@@ -321,7 +321,7 @@ public class City {
         // SQL for Use Case 15
         // Retrieve the top N cities in a specified country.
         String sql =
-                "SELECT city.Name, city.District, city.Population "
+                "SELECT city.Name, country.Name as 'Country', city.District, city.Population "
                         + "FROM city "
                         + "JOIN country ON city.CountryCode = country.Code "
                         + "WHERE country.Name = '" + country + "' "
