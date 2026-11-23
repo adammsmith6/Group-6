@@ -1,327 +1,89 @@
-
 package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.util.ArrayList;
 
 /**
- * Tests for the capital city report methods.
+ * Tests the capital city report display for use cases 17 to 22.
  */
 public class CapitalCityTest
 {
-    static App app;
     static CapitalCity capCityObj;
 
+
     @BeforeAll
-    static void init() {
-        app = new App();
+    static void init()
+    {
         capCityObj = new CapitalCity();
     }
-    /**
-     * UC17: Tests displayCapitalCities with a null list.
-     */
+
     @Test
     void displayCapitalCitiesTestNull()
     {
-        // Test null capital city list.
         capCityObj.displayCapitalCities(null);
     }
 
-    /**
-     * UC17: Tests displayCapitalCities with an empty list.
-     */
     @Test
     void displayCapitalCitiesTestEmpty()
     {
-        // Create empty capital city list.
         ArrayList<CapitalCity> capitalCities = new ArrayList<>();
 
-        // Test empty capital city list.
         capCityObj.displayCapitalCities(capitalCities);
     }
 
-    /**
-     * UC17: Tests displayCapitalCities with valid capital city data.
-     */
+    /** UC17 checks display of the world capital city report. */
     @Test
-    void displayCapitalCitiesTestCapitalCity()
+    void displayCapitalCitiesTestWorld()
     {
-        // Create capital city for testing.
+        displayCapitalCity("London", "United Kingdom", 7285000);
+    }
+
+    /** UC18 checks display of the South America capital city report. */
+    @Test
+    void displayCapitalCitiesTestSouthAmerica()
+    {
+        displayCapitalCity("Buenos Aires", "Argentina", 2982146);
+    }
+
+    /** UC19 checks display of the Caribbean capital city report. */
+    @Test
+    void displayCapitalCitiesTestCaribbean()
+    {
+        displayCapitalCity("Havana", "Cuba", 2256000);
+    }
+
+    /** UC20 checks display of a row from the worldwide top-five report. */
+    @Test
+    void displayTopFiveCapitalCitiesTestWorld()
+    {
+        displayCapitalCity("Tokyo", "Japan", 7980230);
+    }
+
+    /** UC21 checks display of a row from the top-six report for Asia. */
+    @Test
+    void displayTopSixCapitalCitiesTestAsia()
+    {
+        displayCapitalCity("Jakarta", "Indonesia", 9604900);
+    }
+
+    /** UC22 checks display of a row from the top-six report for Eastern Asia. */
+    @Test
+    void displayTopSixCapitalCitiesTestEasternAsia()
+    {
+        displayCapitalCity("Seoul", "South Korea", 9981619);
+    }
+    private void displayCapitalCity(String name, String country, int population)
+    {
         CapitalCity capitalCity = new CapitalCity();
-        capitalCity.name = "London";
-        capitalCity.country = "United Kingdom";
-        capitalCity.population = 7285000;
+        capitalCity.name = name;
+        capitalCity.country = country;
+        capitalCity.population = population;
 
-        // Create capital city list.
         ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Add capital city to list.
         capitalCities.add(capitalCity);
 
-        // Test capital city list.
         capCityObj.displayCapitalCities(capitalCities);
     }
-
-    /**
-     * UC18: Tests displayCapitalCitiesByContinent with a null list.
-     *
-    @Test
-    void displayCapitalCitiesByContinentTestNull()
-    {
-        // Test null capital city list.
-        capCityObj.displayCapitalCitiesByContinent(null);
-    }
-    */
-
-    /**
-     * UC18: Tests displayCapitalCitiesByContinent with an empty list.
-     *
-    @Test
-    void displayCapitalCitiesByContinentTestEmpty()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Create empty capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Test empty capital city list.
-        app.displayCapitalCitiesByContinent(capitalCities);
-    }
-    */
-
-    /**
-     * UC18: Tests displayCapitalCitiesByContinent with valid capital city data.
-     *
-    @Test
-    void displayCapitalCitiesByContinentTestCapitalCity()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Create capital city for testing.
-        CapitalCity capitalCity = new CapitalCity();
-        capitalCity.name = "Lima";
-        capitalCity.country = "Peru";
-        capitalCity.population = 6464693;
-
-        // Create capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Add capital city to list.
-        capitalCities.add(capitalCity);
-
-        // Test capital city list.
-        app.displayCapitalCitiesByContinent(capitalCities);
-    }
-    */
-
-    /**
-     * UC19: Tests displayCapitalCitiesByRegion with a null list.
-     *
-    @Test
-    void displayCapitalCitiesByRegionTestNull()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Test null capital city list.
-        app.displayCapitalCitiesByRegion(null);
-    }
-    */
-
-    /**
-     * UC19: Tests displayCapitalCitiesByRegion with an empty list.
-     *
-    @Test
-    void displayCapitalCitiesByRegionTestEmpty()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Create empty capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Test empty capital city list.
-        app.displayCapitalCitiesByRegion(capitalCities);
-    }
-    */
-
-    /**
-     * UC19: Tests displayCapitalCitiesByRegion with valid capital city data.
-     *
-    @Test
-    void displayCapitalCitiesByRegionTestCapitalCity()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Create capital city for testing.
-        CapitalCity capitalCity = new CapitalCity();
-        capitalCity.name = "La Habana";
-        capitalCity.country = "Cuba";
-        capitalCity.population = 2256000;
-
-        // Create capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Add capital city to list.
-        capitalCities.add(capitalCity);
-
-        // Test capital city list.
-        app.displayCapitalCitiesByRegion(capitalCities);
-    }
-    */
-
-    /**
-     * UC20: Tests displayTopNCapitalCities with a null list.
-     *
-    @Test
-    void displayTopNCapitalCitiesTestNull()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Test null capital city list.
-        app.displayTopNCapitalCities(null);
-    }
-    */
-
-    /**
-     * UC20: Tests displayTopNCapitalCities with an empty list.
-     *
-    @Test
-    void displayTopNCapitalCitiesTestEmpty()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Create empty capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Test empty capital city list.
-        app.displayTopNCapitalCities(capitalCities);
-    }
-    */
-
-    /**
-     * UC20: Tests displayTopNCapitalCities with valid capital city data.
-     *
-    @Test
-    void displayTopNCapitalCitiesTestCapitalCity()
-    {
-        // Create application object.
-        App app = new App();
-
-        // Create capital city for testing.
-        CapitalCity capitalCity = new CapitalCity();
-        capitalCity.name = "Tokyo";
-        capitalCity.country = "Japan";
-        capitalCity.population = 7980230;
-
-        // Create capital city list.
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        // Add capital city to list.
-        capitalCities.add(capitalCity);
-
-        // Test capital city list.
-        app.displayTopNCapitalCities(capitalCities);
-    }
-    */
-
-    // ========================================
-    // USE CASE 21 - Top N capital cities
-    // in a continent
-    // ========================================
-/*
-    @Test
-    void displayTopNCapitalCitiesByContinentTestNull()
-    {
-        // Test when the list is null.
-        App app = new App();
-
-        assertDoesNotThrow(() ->
-                app.displayTopNCapitalCitiesByContinent(null));
-    }
-
-
-    @Test
-    void displayTopNCapitalCitiesByContinentTestEmpty()
-    {
-        // Test when the list is empty.
-        App app = new App();
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        assertDoesNotThrow(() ->
-                app.displayTopNCapitalCitiesByContinent(capitalCities));
-    }
-
-    @Test
-    void displayTopNCapitalCitiesByContinentTestValid()
-    {
-        // Test when the list contains a capital city.
-        App app = new App();
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        CapitalCity capitalCity = new CapitalCity();
-        capitalCity.name = "Tokyo";
-        capitalCity.country = "Japan";
-        capitalCity.population = 7980230;
-
-        capitalCities.add(capitalCity);
-
-        assertDoesNotThrow(() ->
-                app.displayTopNCapitalCitiesByContinent(capitalCities));
-    }
-
-
-    // ========================================
-    // USE CASE 22 - Top N capital cities
-    // in a region
-    // ========================================
-
-    @Test
-    void displayTopNCapitalCitiesByRegionTestNull()
-    {
-        // Test when the list is null.
-        App app = new App();
-
-        assertDoesNotThrow(() ->
-                app.displayTopNCapitalCitiesByRegion(null));
-    }
-
-    @Test
-    void displayTopNCapitalCitiesByRegionTestEmpty()
-    {
-        // Test when the list is empty.
-        App app = new App();
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        assertDoesNotThrow(() ->
-                app.displayTopNCapitalCitiesByRegion(capitalCities));
-    }
-
-    @Test
-    void displayTopNCapitalCitiesByRegionTestValid()
-    {
-        // Test when the list contains a capital city.
-        App app = new App();
-        ArrayList<CapitalCity> capitalCities = new ArrayList<>();
-
-        CapitalCity capitalCity = new CapitalCity();
-        capitalCity.name = "Seoul";
-        capitalCity.country = "South Korea";
-        capitalCity.population = 9981619;
-
-        capitalCities.add(capitalCity);
-
-        assertDoesNotThrow(() ->
-                app.displayTopNCapitalCitiesByRegion(capitalCities));
-    }
-
-*/
 }
