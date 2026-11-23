@@ -14,18 +14,31 @@ import java.util.ArrayList;
 public class CityTest
 {
 
-    static App app;
+    static App a;
     static City cityObj;
 
     @BeforeAll
     static void init() {
-        app = new App();
-        cityObj = new City();
+        App a = new App();
+        a.connect("localhost:33060", 0);
+        cityObj = new City(a.con);
     }
 
     // ========================================
     // UC7 - All cities in the world
     // ========================================
+
+    /**
+     * Tests that getCities() doesn't return an empty list
+     */
+    @Test
+    void getCitiesTest()
+    {
+        // Checks that the getCities() method doesn't return an empty list
+        ArrayList<City> allCities = cityObj.getCities();
+        assert(!(allCities.isEmpty()));
+    }
+
 
     /**
      * Tests displayCities with a null list.
