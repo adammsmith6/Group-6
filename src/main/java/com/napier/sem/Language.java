@@ -146,6 +146,7 @@ public class Language
         }
     }
 
+
     /**
      * Displays the language speakers report.
      *
@@ -153,7 +154,7 @@ public class Language
      */
     public void displayLanguages(ArrayList<Language> languages)
     {
-        // Check whether retrieval failed.
+        // Check whether the list is null.
         if (languages == null)
         {
             System.out.println("No language information available.");
@@ -179,12 +180,13 @@ public class Language
         for (Language language : languages)
         {
             System.out.printf(
-                    "%-25s %-25,d %-20.2f%n",
+                    "%-25s %-25s %-20.2f%n",
                     language.name,
-                    language.speakers,
+                    String.format("%,d", language.speakers),
                     language.worldPercentage
             );
         }
     }
+
 }
 
