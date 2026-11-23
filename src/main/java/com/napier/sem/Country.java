@@ -116,26 +116,29 @@ public class Country {
         }
     }
 
+
     /**
-     * Displays a report of countries including their code, name,
-     * continent, region, population and capital.
+     * Displays country information in a formatted table.
      *
-     * @param countries List of countries to be displayed.
+     * @param countries List of countries to display.
      */
-    public void displayCountries(ArrayList<Country> countries) {
+    public void displayCountries(ArrayList<Country> countries)
+    {
         // Check if the list is null.
-        if (countries == null) {
+        if (countries == null)
+        {
             System.out.println("No country information available.");
             return;
         }
 
-        // Check if the list contains no countries.
-        if (countries.isEmpty()) {
+        // Check if the list is empty.
+        if (countries.isEmpty())
+        {
             System.out.println("No countries found.");
             return;
         }
 
-        // Display the column headings for the country report.
+        // Display column headings.
         System.out.printf(
                 "%-5s %-35s %-20s %-30s %-15s %-30s%n",
                 "Code",
@@ -146,8 +149,15 @@ public class Country {
                 "Capital"
         );
 
-        // Display each country in the report.
-        for (Country country : countries) {
+        // Display each country in the list.
+        for (Country country : countries)
+        {
+            // Skip null country records to prevent NullPointerException.
+            if (country == null)
+            {
+                continue;
+            }
+
             System.out.printf(
                     "%-5s %-35s %-20s %-30s %-15d %-30s%n",
                     country.code,
@@ -159,6 +169,7 @@ public class Country {
             );
         }
     }
+
 
 
     // --------------------------------------------------
