@@ -29,6 +29,8 @@ public class App {
         City cityReports = new City(a.con);
         CapitalCity capitalCityReports = new CapitalCity(a.con);
         Population populationReports = new Population(a.con);
+        Summary populationSummary = new Summary(a.con);
+
 
         // ---------------
         // Use Case 1
@@ -431,9 +433,81 @@ public class App {
         populationReports.displayPopulationByCountry(populationsByCountry);
 
 
+                // -------------------------
+                // Use Case 26 - World Population
+                // -------------------------
+
+        System.out.println("\n========== USE CASE 26: WORLD POPULATION ==========\n");
+
+        Long worldPopulation =
+                populationSummary.getWorldPopulation();
+
+                populationSummary.displayWorldPopulation(worldPopulation);
 
 
+        // -------------------------
+        // Use Case 27 - Population of Asia
+        // -------------------------
 
+        System.out.println("\n========== USE CASE 27: POPULATION OF ASIA ==========\n");
+
+        Long continentPopulation =
+                populationSummary.getContinentPopulation("Asia");
+
+                populationSummary.displayContinentPopulation(
+                "Asia", continentPopulation);
+
+
+        // -------------------------
+        // Use Case 28 - Population of Southeast Asia
+        // -------------------------
+
+        System.out.println("\n========== USE CASE 28: POPULATION OF SOUTHEAST ASIA ==========\n");
+
+        Long regionPopulation =
+                populationSummary.getRegionPopulation("Southeast Asia");
+
+                populationSummary.displayRegionPopulation(
+                "Southeast Asia", regionPopulation);
+
+
+        // -------------------------
+        // Use Case 29 - Population of Myanmar
+        // -------------------------
+
+        System.out.println("\n========== USE CASE 29: POPULATION OF MYANMAR ==========\n");
+
+        Long countryPopulation =
+                populationSummary.getCountryPopulation("Myanmar");
+
+                populationSummary.displayCountryPopulation(
+                "Myanmar", countryPopulation);
+
+
+        // -------------------------
+        // Use Case 30 - Population of California
+        // -------------------------
+
+        System.out.println("\n========== USE CASE 30: POPULATION OF CALIFORNIA ==========\n");
+
+        Long districtPopulation =
+                populationSummary.getDistrictPopulation("California");
+
+                populationSummary.displayDistrictPopulation(
+                "California", districtPopulation);
+
+
+        // -------------------------
+        // Use Case 31 - Population of London
+        // -------------------------
+
+        System.out.println("\n========== USE CASE 31: POPULATION OF LONDON ==========\n");
+
+        Long cityPopulation =
+                populationSummary.getCityPopulation("London");
+
+                populationSummary.displayCityPopulation(
+                "London", cityPopulation);
 
         // Disconnect from the database.
         a.disconnect();
