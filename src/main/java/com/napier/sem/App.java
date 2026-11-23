@@ -30,6 +30,7 @@ public class App {
         CapitalCity capitalCityReports = new CapitalCity(a.con);
         Population populationReports = new Population(a.con);
         Summary populationSummary = new Summary(a.con);
+        Language languageReports = new Language(a.con);
 
 
         // ---------------
@@ -442,7 +443,7 @@ public class App {
         Long worldPopulation =
                 populationSummary.getWorldPopulation();
 
-                populationSummary.displayWorldPopulation(worldPopulation);
+        populationSummary.displayWorldPopulation(worldPopulation);
 
 
         // -------------------------
@@ -454,7 +455,7 @@ public class App {
         Long continentPopulation =
                 populationSummary.getContinentPopulation("Asia");
 
-                populationSummary.displayContinentPopulation(
+        populationSummary.displayContinentPopulation(
                 "Asia", continentPopulation);
 
 
@@ -467,7 +468,7 @@ public class App {
         Long regionPopulation =
                 populationSummary.getRegionPopulation("Southeast Asia");
 
-                populationSummary.displayRegionPopulation(
+        populationSummary.displayRegionPopulation(
                 "Southeast Asia", regionPopulation);
 
 
@@ -480,7 +481,7 @@ public class App {
         Long countryPopulation =
                 populationSummary.getCountryPopulation("Myanmar");
 
-                populationSummary.displayCountryPopulation(
+        populationSummary.displayCountryPopulation(
                 "Myanmar", countryPopulation);
 
 
@@ -493,7 +494,7 @@ public class App {
         Long districtPopulation =
                 populationSummary.getDistrictPopulation("California");
 
-                populationSummary.displayDistrictPopulation(
+        populationSummary.displayDistrictPopulation(
                 "California", districtPopulation);
 
 
@@ -506,8 +507,22 @@ public class App {
         Long cityPopulation =
                 populationSummary.getCityPopulation("London");
 
-                populationSummary.displayCityPopulation(
-                "London", cityPopulation);
+        populationSummary.displayCityPopulation(
+                        "London", cityPopulation);
+
+
+
+        // -------------------------
+        // Use Case 32 - Language Speakers Report
+        // -------------------------
+
+        System.out.println("\n========== USE CASE 32: LANGUAGE SPEAKERS REPORT ==========\n");
+
+        ArrayList<Language> languages =
+                languageReports.getLanguages();
+
+        languageReports.displayLanguages(languages);
+
 
         // Disconnect from the database.
         a.disconnect();
